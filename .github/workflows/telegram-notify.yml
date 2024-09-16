@@ -17,7 +17,7 @@ jobs:
           echo "TELEGRAM_TOKEN=${TELEGRAM_TOKEN}"
           echo "CHAT_ID=${CHAT_ID}"
           if [ "${{ github.event.action }}" == "opened" ]; then
-            MESSAGE=": ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
+            MESSAGE="Новый пулл реквест создан: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
           elif [ "${{ github.event.action }}" == "closed" ] && [ "${{ github.event.pull_request.merged }}" == "true" ]; then
             MESSAGE="Пулл реквест залит: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
           else
