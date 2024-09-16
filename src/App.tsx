@@ -5,6 +5,7 @@ import "./App.css";
 import WeatherAside from "./shared/global_aside/weather_aside/WeatherAside";
 import RoadstatusAside from "./shared/global_aside/roadStatus_asede/RoadstatusAside";
 import FlightsAside from "./shared/global_aside/flights_aside/FlightsAside";
+import Header from "./shared/header/Header";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,9 +13,10 @@ function App() {
   return (
     <>
       <div>
-        <WeatherAside />
+        <Header />
+        {/* <WeatherAside />
         <RoadstatusAside />
-        <FlightsAside />
+        <FlightsAside /> */}
       </div>
     </>
   );
