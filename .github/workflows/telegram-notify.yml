@@ -17,11 +17,11 @@ jobs:
           echo "TELEGRAM_TOKEN=${TELEGRAM_TOKEN}"
           echo "CHAT_ID=${CHAT_ID}"
           if [ "${{ github.event.action }}" == "opened" ]; then
-            MESSAGE="New pull request opened: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. View it here: ${{ github.event.pull_request.html_url }}"
+            MESSAGE=": ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
           elif [ "${{ github.event.action }}" == "closed" ] && [ "${{ github.event.pull_request.merged }}" == "true" ]; then
-            MESSAGE="Pull request merged: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. View it here: ${{ github.event.pull_request.html_url }}"
+            MESSAGE="Пулл реквест залит: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
           else
-            MESSAGE="Pull request closed: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. View it here: ${{ github.event.pull_request.html_url }}"
+            MESSAGE="Пулл реквест закрыт: ${{ github.event.pull_request.title }} by ${{ github.event.pull_request.user.login }}. Ссылка тут: ${{ github.event.pull_request.html_url }}"
           fi
 
           curl -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" -d "chat_id=${CHAT_ID}" -d "text=${MESSAGE}"
