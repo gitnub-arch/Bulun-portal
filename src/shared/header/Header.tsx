@@ -51,7 +51,7 @@ const Header = () => {
             >
               {link.label}
               {activeLink.label === link.label && (
-                <hr className="mt-4 border-[#1875F0] border-[2px]" />
+                <hr className="mt-4 border-[#1875F0] border-[2px] rounded-full" />
               )}
             </a>
           ))}
