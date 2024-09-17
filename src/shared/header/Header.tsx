@@ -36,11 +36,11 @@ const Header = () => {
         </div>
       </div>
       <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
-      <div className="flex justify-between mx-8">
+      <div className="flex justify-around mx-8">
         <div>
           <AlignJustifyIcon className="text-[#DADADA]" />
         </div>
-        <Separator orientation="vertical" className="bg-[#DADADA] -mt-6" />
+        <Separator orientation="vertical" className="bg-[#DADADA] -mt-6 ml-7" />
         <div className="flex justify-center w-[90%] gap-9">
           {LINKS_ITEM.map((link) => (
             <a
@@ -56,7 +56,7 @@ const Header = () => {
             </a>
           ))}
         </div>
-        <Separator orientation="vertical" className="bg-[#DADADA] -mt-6 " />
+        <Separator orientation="vertical" className="bg-[#DADADA] -mt-6 mr-7" />
 
         <Search className="text-[#999999]" />
       </div>
