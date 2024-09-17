@@ -46,7 +46,7 @@ const Header = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-gray-600 font-medium mr-4 p-1"
+              className="text-gray-600 font-medium mr-4 px-3"
               onClick={() => handleLinkClick(link)}
             >
               {link.label}
