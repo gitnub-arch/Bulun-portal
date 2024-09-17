@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <div className="mt-3">
+    <div className="mt-6">
       <div className="flex justify-between mx-8">
         <div className="flex items-center">
           <h4 className="mr-2 font-medium text-base text-[#76767A]">Тиксик</h4>
