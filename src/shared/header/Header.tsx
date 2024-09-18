@@ -7,17 +7,30 @@ import {
 } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { LINKS_ITEM } from "./const";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(LINKS_ITEM[0]);
+ const location = useLocation();
 
   const handleLinkClick = (link: any) => {
     setActiveLink(link);
   };
+ 
+
+  useEffect(() => {
+    const currentLink = LINKS_ITEM.find(
+      (link) => link.href === location.pathname
+    );
+    if (currentLink) {
+      setActiveLink(currentLink);
+    }
+  }, [location]);
+
 
   return (
-    <div className="mt-6">
+    <div className="pt-6 bg-[#FFFFFF] z-10">
       <div className="flex justify-between mx-8">
         <div className="flex items-center">
           <h4 className="mr-2 font-medium text-base text-[#76767A]">Тиксик</h4>
@@ -43,9 +56,9 @@ const Header = () => {
         <Separator orientation="vertical" className="bg-[#DADADA] -mt-6 ml-7" />
         <div className="flex justify-center w-[90%] gap-9">
           {LINKS_ITEM.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className="text-gray-600 font-medium mr-4 px-3"
               onClick={() => handleLinkClick(link)}
             >
@@ -53,7 +66,7 @@ const Header = () => {
               {activeLink.label === link.label && (
                 <hr className="mt-4 border-[#1875F0] border-[2px] rounded-full" />
               )}
-            </a>
+            </Link>
           ))}
         </div>
         <Separator orientation="vertical" className="bg-[#DADADA] -mt-6 mr-7" />
