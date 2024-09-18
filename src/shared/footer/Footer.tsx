@@ -3,9 +3,9 @@ const Footer = () => {
       <div>
         <footer className="bg-white p-4 text-black">
   <div className="max-w-7xl mx-auto flex justify-between items-center">
-    <div className="text-lg">Булунский портал</div>
     <nav>
-      <ul className="flex space-x-4">
+      <ul className="flex space-x-4 gap-6">
+        <li className="fond-bold">Булунский портал</li>
         <li><a href="#" className="hover:underline">Главная</a></li>
         <li><a href="#" className="hover:underline">Новости</a></li>
         <li><a href="#" className="hover:underline">Объявления</a></li>
