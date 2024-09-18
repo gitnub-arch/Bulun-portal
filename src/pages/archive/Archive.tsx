@@ -11,9 +11,9 @@ import { NEWSPAPER_ITEM } from "./const";
 
 const Archive = () => {
   return (
-    <div className="bg-[#F4F4F4]">
-    <div className="container m-auto mt-8 w-[877px]">
-      <Separator className="mb-[20px]" />
+    <div className="bg-[#F4F4F4] pt-8">
+    <div className="container m-auto w-[877px]">
+      <Separator className="mb-[20px] bg-[#E1E1E1]" />
       <div className="flex justify-between">
         <h2 className="font-normal text-2xl">Газета «Маяк Арктики»</h2>
         <div className="flex">
