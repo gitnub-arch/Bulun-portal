@@ -7,7 +7,7 @@ import RoadstatusAside from "./shared/global_aside/roadStatus_asede/RoadStatusAs
 import FlightsAside from "./shared/global_aside/flights_aside/FlightsAside";
 import TaxiScheduleAside from "./shared/global_aside/taxiSchedule_aside/TaxiScheduleAside";
 import Header from "./shared/header/Header";
-import Arhive from "./pages/arhive/Arhive";
+import Archive from "./pages/archive_page/Archive";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,7 +16,7 @@ function App() {
     <>
       <div className="pt-10 min-h-[100vh] mx-auto">
         <Header />
-        <Arhive />
+        <Archive />
         {/* <WeatherAside />
         <RoadstatusAside />
         <FlightsAside /> */}
