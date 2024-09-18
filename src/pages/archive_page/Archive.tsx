@@ -4,7 +4,7 @@ import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAs
 import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
 import { ARCHIVE_ITEM } from "./const";
 import mayak from "@/assets/images/mayak.jpg";
-import { Separator } from "../../components/ui/separator";
+
 
 const Archive = () => {
   return (
