@@ -9,7 +9,7 @@ import {
 import { Separator } from "../../components/ui/separator";
 import { NEWSPAPER_ITEM } from "./const";
 
-const Archive = () => {
+const News = () => {
   return (
     <div className="bg-[#F4F4F4] pt-8">
     <div className="container m-auto w-[877px]">
@@ -61,4 +61,4 @@ const Archive = () => {
   );
 };
 
-export default Archive;
+export default News;
