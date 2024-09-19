@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Golos Text", sans-serif;
 
   /* Colors */
   --blue: #499bf2;
@@ -21,7 +21,8 @@ a:hover {
 }
 
 body {
-  background-color: #a4a4a4;
+  background-color: #F4F4F4;
+  ;
 }
 
 h1 {

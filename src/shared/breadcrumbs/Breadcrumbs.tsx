@@ -1,45 +1,46 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../components/ui/breadcrumb";
+import * as React from "react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+  BreadcrumbEllipsis,
+} from "@/components/ui/breadcrumb";
+import { BREADCRUMBS_ITEM } from "./const";
+import { Separator } from "@/components/ui/separator";
 
-  
-  const Breadcrumbs = () =>{
-    return (
-      <Breadcrumb className="text-[--orange] text-xs font-normal">
+const Breadcrumbs = () => {
+  return (
+    <div className="mt-[60px] ml-[90px]">
+      <Breadcrumb className="text-xs font-normal">
         <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/" className="text-[ --orange]">Главная</BreadcrumbLink> 
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbEllipsis className="h-4 w-4" />
-                <span className="sr-only">Toggle menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem className=" --orange">Новости</DropdownMenuItem>
-                <DropdownMenuItem>Объявления</DropdownMenuItem>
-                <DropdownMenuItem>Афиша</DropdownMenuItem>
-                <DropdownMenuItem>Транспорт</DropdownMenuItem>
-                <DropdownMenuItem>Форум</DropdownMenuItem>
-                <DropdownMenuItem>Администрация</DropdownMenuItem>
-                <DropdownMenuItem>Архив</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Архив</BreadcrumbPage>
-          </BreadcrumbItem>
+          {BREADCRUMBS_ITEM.map((item, index)=> (
+            <React.Fragment key={item.href}>
+              {/* Отображение хлебных крошек, если это не текущая страница */}
+              {!item.isCurrentPage ? (
+                <BreadcrumbItem>
+                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                </BreadcrumbItem>
+              ) : (
+                // Если это текущая страница, используем компонент BreadcrumbPage
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{item.label}
+                    <hr className="mt-[2px] border-black border-[1px]"></hr>
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              )}
+
+              {/* Отображение разделителя, кроме последнего элемента */}
+              {index < BREADCRUMBS_ITEM.length - 1 && <BreadcrumbSeparator />}
+            </React.Fragment>
+          ))}
         </BreadcrumbList>
       </Breadcrumb>
-    )
-  }
+      <Separator orientation="horizontal" className="bg-[#DADADA] mt-5 w-[70%]" />
+    </div>
+  );
+};
 
-  export default Breadcrumbs;
-
-  
+export default Breadcrumbs;
