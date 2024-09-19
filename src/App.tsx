@@ -8,6 +8,7 @@ import FlightsAside from "./shared/global_aside/flights_aside/FlightsAside";
 import TaxiScheduleAside from "./shared/global_aside/taxiSchedule_aside/TaxiScheduleAside";
 import Header from "./shared/header/Header";
 import Archive from "./pages/archive_page/Archive";
+import Weather from "./pages/weather_page/Weathe";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,7 +17,8 @@ function App() {
     <>
       <div className="pt-10 min-h-[100vh] mx-auto">
         <Header />
-        <Archive />
+        {/* <Archive /> */}
+        <Weather />
         {/* <WeatherAside />
         <RoadstatusAside />
         <FlightsAside /> */}
