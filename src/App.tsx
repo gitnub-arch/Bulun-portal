@@ -16,7 +16,6 @@ function App() {
     <>
       <div>
         <Header />
-        <Breadcrumbs />
         {/* <WeatherAside />
         <RoadstatusAside />
         <FlightsAside /> */}

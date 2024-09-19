@@ -4,36 +4,41 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbSeparator,
   BreadcrumbPage,
-  BreadcrumbEllipsis,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { BREADCRUMBS_ITEM } from "./const";
 import { Separator } from "@/components/ui/separator";
+import { BreadcrumbsProps } from "./type"; // Импортируйте типы
 
-const Breadcrumbs = () => {
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
+  // Определяем последний элемент
+  const lastItem = history[history.length - 1];
+  
   return (
     <div className="mt-[60px] ml-[90px]">
       <Breadcrumb className="text-xs font-normal">
         <BreadcrumbList>
-          {BREADCRUMBS_ITEM.map((item, index)=> (
+          {history.map((item, index) => (
             <React.Fragment key={item.href}>
-              {/* Отображение хлебных крошек, если это не текущая страница */}
-              {!item.isCurrentPage ? (
-                <BreadcrumbItem>
-                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+              {index < history.length - 1 ? (
+                // Отображаем ссылку для всех элементов, кроме последнего
+                <BreadcrumbItem className="gap-2">
+                  <BreadcrumbLink href={item.href} className="text-gray-600">
+                    {item.label}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
               ) : (
-                // Если это текущая страница, используем компонент BreadcrumbPage
+                // Отображаем текущую страницу как активную
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{item.label}
-                    <hr className="mt-[2px] border-black border-[1px]"></hr>
+                  <BreadcrumbPage className="text-[#E1E1E1]">
+                    {item.label}
+                    <hr className="mt-[2px] border-black border-[1px]" />
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               )}
 
-              {/* Отображение разделителя, кроме последнего элемента */}
-              {index < BREADCRUMBS_ITEM.length - 1 && <BreadcrumbSeparator />}
+              {/* Отображаем разделитель между элементами, кроме последнего */}
+              {index < history.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
           ))}
         </BreadcrumbList>
