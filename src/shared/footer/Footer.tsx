@@ -2,56 +2,28 @@ const Footer = () => {
   return (
     <div>
       <footer className="bg-white p-4 text-black">
-        <div>
-          <nav>
-            <ul className="flex justify-between gap-6 max-w-[1200px] mx-auto">
-              <li>
-                <h1 className="h-[24px] font-black text-lg mr-16 text-[#000000]">
-                  Булунский Портал
-                </h1>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Главная
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Новости
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Объявления
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Афиша
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Транспорт
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Форум
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Администрация
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Архив
-                </a>
-              </li>
-            </ul>
-          </nav>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 gap-4 text-center">
+            <li className="text-black font-bold ml-0 md:ml-56">Булунский портал</li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Новости</a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Главная</a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Объявления</a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Транспорт</a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Администрация</a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-black text-[#76767A]">Архив</a>
+            </li>
+          </ul>
         </div>
       </footer>
     </div>
