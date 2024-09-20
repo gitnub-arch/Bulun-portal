@@ -6,16 +6,17 @@ import WeatherAside from "./shared/global_aside/weather_aside/WeatherAside";
 import RoadstatusAside from "./shared/global_aside/roadStatus_asede/RoadStatusAside";
 import FlightsAside from "./shared/global_aside/flights_aside/FlightsAside";
 import TaxiScheduleAside from "./shared/global_aside/taxiSchedule_aside/TaxiScheduleAside";
-import Header from './shared/header/Header';
-import Footer from "./shared/footer/Footer";
+import Header from "./shared/header/Header";
+import Archive from "./pages/archive_page/Archive";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
+      <div className="pt-10 min-h-[100vh] mx-auto">
         <Header />
+        <Archive />
         {/* <WeatherAside />
         <RoadstatusAside />
         <FlightsAside /> */}
@@ -25,4 +26,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
