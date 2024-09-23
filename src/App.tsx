@@ -14,12 +14,13 @@ function App() {
 
   return (
     <>
-      <div className="pt-10 min-h-[100vh] mx-auto">
+      <div className="pt-10  mx-auto">
         <Header />
         <Archive />
         {/* <WeatherAside />
         <RoadstatusAside />
-        <FlightsAside /> */}
+        <FlightsAside />
+        <TaxiScheduleAside/> */}
       </div>
     </>
   );
