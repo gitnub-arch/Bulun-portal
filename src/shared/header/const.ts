@@ -8,5 +8,5 @@ export const LINKS_ITEM: LinkItemProps[] = [
   { label: 'Транспорт', href: '#' },
   { label: 'Погода', href: '/weather' },
   { label: 'Администрация', href: '#' },
-  { label: 'Архив', href: '#' },
+  { label: 'Архив', href: '/archive_page' },
 ];
