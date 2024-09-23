@@ -35,7 +35,7 @@ const Archive = () => {
               className="w-[328px] h-[295px] object-cover sm:w-auto sm:h-auto"
             />
 
-            <p className="absolute top-6 left-14 text-lg font-semibold">
+            <p className="absolute top-6 left-14 text-lg font-[500]">
               Архив газеты
             </p>
             <p className="absolute top-12 left-14 text-6xl font-black">МАЯК</p>
@@ -46,7 +46,7 @@ const Archive = () => {
             <p className="absolute top-40 left-14 text-[8px]">
               Информационная, <br /> общественно-политическая газета
             </p>
-            <button className="absolute top-52 left-14 px-10 py-3 mb-7 border-[#1875F0] text-xs font-semibold text-[#1875F0]">
+            <button className="absolute top-52 left-14 px-10 py-3 mb-7 border-[--green] text-xs font-semibold text-[--green]">
               ПРОГНОЗ ПОГОДЫ
             </button>
           
