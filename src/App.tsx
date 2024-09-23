@@ -9,6 +9,10 @@ import TaxiScheduleAside from "./shared/global_aside/taxiSchedule_aside/TaxiSche
 import Header from "./shared/header/Header";
 import Archive from "./pages/archive_page/Archive";
 import Footer from "./shared/footer/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Afisha from "./pages/afisha/Afisha";
+import News from "./pages/news/News";
+import Home from "./pages/home/Home";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,12 +21,12 @@ function App() {
     <>
       <div className="pt-10 min-h-[100vh] mx-auto">
         <Header />
-        <Home/>
-        {/* <Archive /> */}
-        {/* <WeatherAside />
-        <RoadstatusAside />
-        <FlightsAside /> */}
-        <Footer/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/afisha" element={<Afisha />} />
+        </Routes>
+        <Footer />
       </div>
     </>
   );

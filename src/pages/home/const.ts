@@ -27,7 +27,7 @@ export const HOME_ITEM: HomeProps[] = [
     imgURL: poster,
     title: "Poster",
     text: "Афиша",
-    link: "/Poster",
+    link: "/Afisha",
   },
   {
     id: 4,
