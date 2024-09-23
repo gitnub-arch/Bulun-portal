@@ -7,22 +7,40 @@ import {
 } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { LINKS_ITEM } from "./const";
-import { useState } from "react";
-import LinkItemProps from "./type"; // Импортируйте типы
+import { useState, useEffect } from "react";
+import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
-  const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]); // Хранение истории
+  const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
+  const location = useLocation();
 
-  const handleLinkClick = (link: LinkItemProps) => {
+  const updateActiveLink = (link: LinkItemProps) => {
     setActiveLink(link);
-    setHistory(prevHistory => {
-      // Добавляем новый элемент в начало истории и ограничиваем её длину до 4
-      const updatedHistory = [...prevHistory, link].slice(0, 9);
-      return updatedHistory;
+    setHistory((prevHistory) => {
+      if (!prevHistory.some((item) => item.label === link.label)) {
+        const updatedHistory = [...prevHistory, link].slice(0, 9);
+        return updatedHistory;
+      } else {
+        return prevHistory;
+      }
     });
   };
+
+  const handleLinkClick = (link: LinkItemProps) => {
+    updateActiveLink(link);
+  };
+
+  useEffect(() => {
+    const currentLink = LINKS_ITEM.find(
+      (link) => link.href === location.pathname
+    );
+    if (currentLink) {
+      updateActiveLink(currentLink);
+    }
+  }, [location]);
 
   return (
     <div>
