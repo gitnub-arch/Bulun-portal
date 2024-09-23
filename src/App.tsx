@@ -25,9 +25,6 @@ function App() {
           <Route path="/afisha" element={<Afisha />} />
         </Routes>
         <Archive />
-        {/* <WeatherAside />
-        <RoadstatusAside />
-        <FlightsAside /> */}
         <Footer />
       </div>
     </>
