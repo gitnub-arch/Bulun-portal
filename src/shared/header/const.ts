@@ -6,7 +6,7 @@ export const LINKS_ITEM: LinkItemProps[] = [
   { label: 'Объявления', href: '#' },
   { label: 'Афиша', href: '/afisha' },
   { label: 'Транспорт', href: '#' },
-  { label: 'Форум', href: '#' },
+  { label: 'Погода', href: '/weather' },
   { label: 'Администрация', href: '#' },
   { label: 'Архив', href: '#' },
 ];

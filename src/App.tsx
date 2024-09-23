@@ -13,6 +13,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Afisha from "./pages/afisha/Afisha";
 import News from "./pages/news/News";
 import Home from "./pages/home/Home";
+import Weathe from "./pages/weather_page/Weathe";
+import Weather from "./pages/weather_page/Weathe";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,7 +27,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/afisha" element={<Afisha />} />
+          <Route path="/archive_page" element={<Archive />} />
+          <Route path="/weather" element={<Weathe />} />
         </Routes>
+        <Weather/>
         <Footer />
       </div>
     </>
