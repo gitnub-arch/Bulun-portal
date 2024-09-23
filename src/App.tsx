@@ -8,7 +8,13 @@ import FlightsAside from "./shared/global_aside/flights_aside/FlightsAside";
 import TaxiScheduleAside from "./shared/global_aside/taxiSchedule_aside/TaxiScheduleAside";
 import Header from "./shared/header/Header";
 import Archive from "./pages/archive_page/Archive";
-import Weather from "./pages/weather_page/Weather";
+import Footer from "./shared/footer/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Afisha from "./pages/afisha/Afisha";
+import News from "./pages/news/News";
+import Home from "./pages/home/Home";
+import Weathe from "./pages/weather_page/Weathe";
+import Weather from "./pages/weather_page/Weathe";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,11 +23,15 @@ function App() {
     <>
       <div className="pt-10 min-h-[100vh] mx-auto">
         <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/afisha" element={<Afisha />} />
+          <Route path="/archive_page" element={<Archive />} />
+          <Route path="/weather" element={<Weathe />} />
+        </Routes>
         <Weather/>
-        {/* <Archive /> */}
-        {/* <WeatherAside />
-        <RoadstatusAside />
-        <FlightsAside /> */}
+        <Footer />
       </div>
     </>
   );
