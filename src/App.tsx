@@ -14,20 +14,22 @@ import Afisha from "./pages/afisha/Afisha";
 import News from "./pages/news/News";
 import Home from "./pages/home/Home";
 import Weather from "./pages/weather_page/Weather";
+import AdministrationSection from "./pages/administration/AdministrationSection";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="pt-10 min-h-[100vh] mx-auto">
-        <Header />
+      <div className=" min-h-[100vh] mx-auto">
+        <Header className="pt-5" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/afisha" element={<Afisha />} />
           <Route path="/archive_page" element={<Archive />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/administration" element={<AdministrationSection />} />
         </Routes>
 
         <Footer />

@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="mt-6 bg-white">
+      <div className="pt-6 bg-white">
         <div className="flex justify-between mx-8">
           <div className="flex items-center">
             <h4 className="mr-2 font-medium text-base text-[#76767A]">
