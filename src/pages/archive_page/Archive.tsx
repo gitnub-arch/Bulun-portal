@@ -50,7 +50,7 @@ const Archive = () => {
               Информационная, <br /> общественно-политическая газета
             </p>
             <a
-              href="/weather" // Замените на нужный URL для страницы с прогнозом погоды
+              href="/weather"
               className="absolute top-52 left-14 px-10 py-3 mb-7 border-[#1875F0] text-xs font-semibold text-[#1875F0] border"
             >
               ПРОГНОЗ ПОГОДЫ
