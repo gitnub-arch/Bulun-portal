@@ -14,6 +14,7 @@ import Afisha from "./pages/afisha/Afisha";
 import News from "./pages/news/News";
 import Home from "./pages/home/Home";
 import Weather from "./pages/weather_page/Weather";
+import SearchResults from "./pages/search_results/SearchResults";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,7 +30,7 @@ function App() {
           <Route path="/archive_page" element={<Archive />} />
           <Route path="/weather" element={<Weather />} />
         </Routes>
-
+        <SearchResults />
         <Footer />
       </div>
     </>
