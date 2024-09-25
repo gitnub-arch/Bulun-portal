@@ -15,6 +15,7 @@ import News from "./pages/news/News";
 import Home from "./pages/home/Home";
 import Weather from "./pages/weather_page/Weather";
 import AdministrationSection from "./pages/administration/AdministrationSection";
+import AddFile from "./shared/add_file/AddFile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/afisha" element={<Afisha />} />
           <Route path="/archive_page" element={<Archive />} />
+          <Route path="/add-file" element={<AddFile />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/administration" element={<AdministrationSection />} />
         </Routes>

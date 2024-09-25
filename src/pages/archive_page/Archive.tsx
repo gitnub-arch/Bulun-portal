@@ -13,24 +13,30 @@ const Archive = () => {
       <div className="">
         <div className="flex flex-wrap relative">
           {ARCHIVE_ITEM.map((item) => (
-            <div className="bg-[#fff] p-1 w-full max-h-[255px] max-w-[410px] mb-8 mx-5">
+            <div
+              key={item.id}
+              className="bg-[#fff] p-1 w-full max-h-[255px] max-w-[410px] mb-8 mx-5"
+            >
               <img src={item.imgURL} alt={item.title} />
               <p className="text-center p-1 text-lg font-semibold">
                 {item.text}
               </p>
             </div>
           ))}
+
           <Link
-            to="/add"
+            to="/add-file" // Заменил на строковый путь
             className="px-14 py-7 absolute left-[28%] top-[100%] md:top-[56%]"
           >
             <Button>ДОБАВИТЬ</Button>
           </Link>
+
           <div className="-mt-96 block hidden xl:block">
             <WeatherAside />
             <RoadstatusAside />
             <FlightsAside />
           </div>
+
           <div className="-mb-[120%] mt-24 mx-14 xl:-mt-[310px] xl:mx-5 relative">
             <img
               src={mayak}
