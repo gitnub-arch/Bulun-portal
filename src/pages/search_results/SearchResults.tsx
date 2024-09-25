@@ -5,7 +5,7 @@ import { SEARCH_ITEM } from "./const";
 
 const SearchResults = () => {
   return (
-    <div className="flex container m-auto max-w-[1024px]">
+    <div className="flex mx-auto max-w-[1200px]">
       <div>
         <div className="flex mb-5">
           <h2 className="text-2xl font-normal">Результат поиска:</h2>
