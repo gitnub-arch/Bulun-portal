@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const WeatherAside = () => {
   return (
-    <div className="bg-[#fff] max-w-[266px] text-center m-5 rounded-md shadow-[0_4px_6px_3px_rgba(0,0,0,0.4)]">
+    <div className="bg-[#fff] max-w-[266px] text-center m-5 rounded-md shadow-[0px_3px_10px_rgba(0,0,0,0.3)]">
       <div className="flex gap-14 items-center justify-around ">
         <h4 className="py-7 text-sm font-bold">Погода</h4>
         <Ellipsis className="cursor-pointer" />

@@ -10,21 +10,30 @@ import Header from "./shared/header/Header";
 import Archive from "./pages/archive_page/Archive";
 import Footer from "./shared/footer/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import News from "./pages/news/News";
 import Afisha from "./pages/afisha/Afisha";
+import News from "./pages/news/News";
+import Home from "./pages/home/Home";
+import Weather from "./pages/weather_page/Weather";
+import AdministrationSection from "./pages/administration/AdministrationSection";
+import AddFile from "./shared/add_file/AddFile";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="pt-10  mx-auto">
-        <Header />
+      <div className=" min-h-[100vh] mx-auto">
+        <Header className="pt-5" />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/afisha" element={<Afisha />} />
+          <Route path="/archive_page" element={<Archive />} />
+          <Route path="/add-file" element={<AddFile />} />
+          <Route path="/weather" element={<Weather />} />
+          <Route path="/administration" element={<AdministrationSection />} />
         </Routes>
-        <Archive />
+
         <Footer />
       </div>
     </>

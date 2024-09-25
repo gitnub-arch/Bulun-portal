@@ -4,7 +4,7 @@ import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAs
 import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
 import { ARCHIVE_ITEM } from "./const";
 import mayak from "@/assets/images/mayak.jpg";
-
+import { Link } from "react-router-dom";
 
 const Archive = () => {
   return (
@@ -13,21 +13,30 @@ const Archive = () => {
       <div className="">
         <div className="flex flex-wrap relative">
           {ARCHIVE_ITEM.map((item) => (
-            <div className="bg-[#fff] p-1 w-full max-h-[255px] max-w-[410px] mb-8 mx-5">
+            <div
+              key={item.id}
+              className="bg-[#fff] p-1 w-full max-h-[255px] max-w-[410px] mb-8 mx-5"
+            >
               <img src={item.imgURL} alt={item.title} />
               <p className="text-center p-1 text-lg font-semibold">
                 {item.text}
               </p>
             </div>
           ))}
-          <Button className="px-14 py-7 absolute left-[28%] top-[100%] md:top-[56%]">
-            ДОБАВИТЬ
-          </Button>
+
+          <Link
+            to="/add-file" // Заменил на строковый путь
+            className="px-14 py-7 absolute left-[28%] top-[100%] md:top-[56%]"
+          >
+            <Button>ДОБАВИТЬ</Button>
+          </Link>
+
           <div className="-mt-96 block hidden xl:block">
             <WeatherAside />
             <RoadstatusAside />
             <FlightsAside />
           </div>
+
           <div className="-mb-[120%] mt-24 mx-14 xl:-mt-[310px] xl:mx-5 relative">
             <img
               src={mayak}
@@ -46,10 +55,12 @@ const Archive = () => {
             <p className="absolute top-40 left-14 text-[8px]">
               Информационная, <br /> общественно-политическая газета
             </p>
-            <button className="absolute top-52 left-14 px-10 py-3 mb-7 border-[--green] text-xs font-semibold text-[--green]">
+            <a
+              href="/weather"
+              className="absolute top-52 left-14 px-10 py-3 mb-7 border-[#1875F0] text-xs font-semibold text-[#1875F0] border"
+            >
               ПРОГНОЗ ПОГОДЫ
-            </button>
-          
+            </a>
           </div>
         </div>
       </div>
