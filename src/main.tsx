@@ -10,10 +10,6 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <App />
-      <Routes>
-        <Route path="/news" element={<News />} />
-        <Route path="/afisha" element={<Afisha />} />
-      </Routes>
     </BrowserRouter>
   </StrictMode>
 );
