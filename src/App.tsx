@@ -17,6 +17,7 @@ import Weather from "./pages/weather_page/Weather";
 import AdministrationSection from "./pages/administration/AdministrationSection";
 import AddFile from "./shared/add_file/AddFile";
 import AccountHome from "./account_pages/accont_home/AccountHome";
+import SearchResults from "./pages/search_results/SearchResults";
 
 function App() {
   const [count, setCount] = useState(0);
