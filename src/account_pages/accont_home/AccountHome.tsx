@@ -1,11 +1,40 @@
-import React from "react";
-import { RussianRuble, Globe } from "lucide-react";
+import React, { useState } from "react";
+import {
+  RussianRuble,
+  Globe,
+  ArrowUp,
+  ArrowDown,
+  ChevronDown,
+  Tablet,
+  ArrowDownUp,
+} from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Separator } from "../../components/ui/separator";
+import { DEVICE_ITEM } from "./const";
 
 const AccountHome = () => {
+  const [activePeriod, setActivePeriod] = useState("day");
+  const [trafficData, setTrafficData] = useState({
+    day: {
+      received: [36, 49, 48, 80, 18, 8, 125],
+      sent: [49, 65, 90, 25, 99, 112, 25],
+    },
+    week: {
+      received: [20, 30, 25, 40, 35, 50, 60],
+      sent: [5, 10, 15, 20, 25, 30, 35],
+    },
+    month: {
+      received: [50, 70, 60, 80, 90, 100, 110],
+      sent: [15, 25, 35, 45, 55, 65, 75],
+    },
+  });
+
+  const handlePeriodClick = (period) => {
+    setActivePeriod(period);
+  };
+
   return (
-    <div className="container max-w-[1250px] mx-auto mt-5 ">
+    <div className="container max-w-[1250px] mx-auto mt-5 flex gap-8">
       <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff]">
         <div>
           <h2 className="text-[22px] font-semibold mb-5">Баланс аккаунта</h2>
@@ -25,15 +54,15 @@ const AccountHome = () => {
             </span>
             <span className="text-xs text-[#76767A] cursor-pointer">МБ</span>
           </div>
-          <div class="relative w-[200px] h-[200px] mt-6 mx-auto">
-            <div class="absolute inset-0 flex items-center justify-center rounded-full bg-[#F6F6FA]">
-              <div class="relative w-36 h-36 flex items-center justify-center">
-                <div class="absolute w-[166px] h-[166px] rounded-full border-8 border-blue-500"></div>
-                <div class="relative text-center bg-[#fff] rounded-full w-[125px] h-[125px]">
-                  <div class=" absolute w-[109px] h-[109px] rounded-full border-2 border-dashed top-[8px] left-[8px] py-5 px-3">
-                    <span class="text-3xl font-semibold">8.27</span>
+          <div className="relative w-[200px] h-[200px] mt-6 mx-auto">
+            <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#F6F6FA]">
+              <div className="relative w-36 h-36 flex items-center justify-center">
+                <div className="absolute w-[166px] h-[166px] rounded-full border-8 border-blue-500"></div>
+                <div className="relative text-center bg-[#fff] rounded-full w-[125px] h-[125px]">
+                  <div className="absolute w-[109px] h-[109px] rounded-full border-2 border-dashed top-[8px] left-[8px] py-5 px-3">
+                    <span className="text-3xl font-semibold">8.27</span>
                     <br />
-                    <span class="text-gray-400 text-sm">из 12 ГИГ</span>
+                    <span className="text-gray-400 text-sm">из 12 ГИГ</span>
                   </div>
                 </div>
               </div>
@@ -61,6 +90,144 @@ const AccountHome = () => {
           </button>
         </div>
       </aside>
+
+      <div className="">
+        <div className=" w-full bg-[#fff] py-[50px] px-[35px]">
+          <p className="text-5 font-semibold">Статистика расхода трафика</p>
+          <Separator className="my-5 max-w-[690px]" />
+          <div className="flex gap-20 mb-5">
+            <div>
+              <div className="flex gap-[70px] mb-1">
+                <span className="text-sm text-[#a0a0a2]">Всего</span>
+                <span className="text-sm text-[#a0a0a2]">Принято</span>
+                <span className="text-sm text-[#a0a0a2]">Передано</span>
+              </div>
+              <div className="flex gap-10">
+                <div className="flex items-center">
+                  <p className="flex text-xl font-medium">8.27 </p>
+                  <p className="text-[#a0a0a2] text-[12px] mt-1 ml-1">ГИГ</p>
+                </div>
+                <div className="flex items-center">
+                  <ArrowDown className="text-[#1875F0] mr-1" />
+                  <p className="flex text-xl font-medium">1.32</p>
+                  <span className="text-[#a0a0a2] text-[12px] mt-1 ml-1">
+                    ГИГ
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <ArrowUp className="text-[#3CD0F0] mr-1" />
+                  <p className="flex text-xl font-medium">0.74</p>
+                  <span className="text-[#a0a0a2] text-[12px] mt-1 ml-1">
+                    ГИГ
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                className={`${
+                  activePeriod === "day"
+                    ? "shadow-[0px_3px_10px_rgba(0,0,0,0.3)] bg-[#fff] text-[#D86E28]"
+                    : ""
+                } text-sm py-2 px-6 mr-3 `}
+                onClick={() => handlePeriodClick("day")}
+              >
+                День
+              </button>
+              <button
+                className={`${
+                  activePeriod === "week"
+                    ? "shadow-[0px_3px_10px_rgba(0,0,0,0.3)] bg-[#fff] text-[#D86E28]"
+                    : ""
+                } text-sm py-2 px-6 mr-3`}
+                onClick={() => handlePeriodClick("week")}
+              >
+                Неделя
+              </button>
+              <button
+                className={`${
+                  activePeriod === "month"
+                    ? "shadow-[0px_3px_10px_rgba(0,0,0,0.3)] bg-[#fff] text-[#D86E28]"
+                    : ""
+                } text-sm py-2 px-6`}
+                onClick={() => handlePeriodClick("month")}
+              >
+                Месяц
+              </button>
+            </div>
+          </div>
+          <div className="flex">
+            <div>
+              {["20", "15", "10", "5", "0"].map((value, index) => (
+                <div className="flex items-center mb-7" key={index}>
+                  <p className="text-[#a0a0a2]">{value}гиг</p>
+                  <div className="w-full max-w-[637px] ml-16 mt-1 absolute border-[1px] border-dashed text-[#a0a0a2]"></div>
+                </div>
+              ))}
+            </div>
+            <div className="flex gap-[60px] items-end w-full h-[250px] z-10">
+              {trafficData[activePeriod].received.map((height, index) => (
+                <div className="flex flex-col items-center ml-6" key={index}>
+                  <div
+                    className="bg-[#3CD0F0] w-[10px] rounded-full mb-1"
+                    style={{ height: `${height}px` }}
+                  ></div>
+                  <div
+                    className="bg-[#1875F0] w-[10px] rounded-full"
+                    style={{
+                      height: `${trafficData[activePeriod].sent[index]}px`,
+                    }}
+                  ></div>
+                  <span className="text-gray-400 text-sm mt-2">
+                    {["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"][index]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className=" w-full bg-[#fff] py-[50px] px-[35px] mt-5">
+          <div className="flex items-center justify-between">
+            <p className="text-5 font-semibold">Подключенные устройства</p>
+            <button className="px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
+              Показать все устройства
+            </button>
+          </div>
+          <div className="flex items-center gap-[60px] mt-11">
+            <div className="flex items-center">
+              <span>УСТРОЙСТВО</span>
+              <ChevronDown />
+            </div>
+            <div className="flex items-center">
+              <span>РАСХОД ТРАФИКА</span>
+              <ChevronDown />
+            </div>
+            <div className="flex items-center">
+              <span>IP АДРЕС</span>
+              <ChevronDown />
+            </div>
+            <div className="flex items-center">
+              <span>СТАТУС</span>
+              <ChevronDown />
+            </div>
+          </div>
+          {DEVICE_ITEM.map((device, index) => (
+            <div className="flex items-center gap-[60px] mt-11" key={index}>
+              <div className="flex items-center">
+                {device.iconURL}
+                <p>{device.name}</p>
+              </div>
+              <div className="flex items-center">
+                <ArrowDownUp />
+                <p>{device.dataUsage}</p>
+                <p>ГИГ</p>
+              </div>
+              <p>{device.ipAddress}</p>
+              <p className="text-[#32BC78]">{device.status}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
