@@ -11,7 +11,8 @@ import { LINKS_ITEM } from "./const";
 import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"; // Импортируем useNavigate для перехода
+import AccountHome from "../../account_pages/accont_home/AccountHome";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
@@ -19,6 +20,7 @@ const Header = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const navigate = useNavigate(); // Используем useNavigate для перехода
 
   const updateActiveLink = (link: LinkItemProps) => {
     setActiveLink(link);
@@ -45,6 +47,11 @@ const Header = () => {
     }
   }, [location]);
 
+  // Функция для перехода на AccountHome
+  const handleUserClick = () => {
+    navigate("/account"); // Переход на страницу аккаунта
+  };
+
   return (
     <div>
       <div className="pt-6 bg-white">
@@ -61,8 +68,15 @@ const Header = () => {
             Булунский Портал
           </h1>
           <div className="flex">
-            <User className="w-5 h-5 text-[#DADADA]" />
-            <span className="ml-5 font-medium text-base text-[#999999]">
+            <User
+              className="w-5 h-5 text-[#DADADA] cursor-pointer"
+              onClick={handleUserClick}
+            />{" "}
+            {/* Клик для перехода */}
+            <span
+              className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
+              onClick={handleUserClick}
+            >
               Войти
             </span>
           </div>

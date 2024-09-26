@@ -15,7 +15,8 @@ import News from "./pages/news/News";
 import Home from "./pages/home/Home";
 import Weather from "./pages/weather_page/Weather";
 import AdministrationSection from "./pages/administration/AdministrationSection";
-import SearchResults from "./pages/search_results/SearchResults";
+import AddFile from "./shared/add_file/AddFile";
+import AccountHome from "./account_pages/accont_home/AccountHome";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,10 +26,12 @@ function App() {
       <div className=" min-h-[100vh] mx-auto">
         <Header className="pt-5" />
         <Routes>
+          <Route path="/account" element={<AccountHome />} />
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/afisha" element={<Afisha />} />
           <Route path="/archive_page" element={<Archive />} />
+          <Route path="/add-file" element={<AddFile />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/administration" element={<AdministrationSection />} />
         </Routes>
