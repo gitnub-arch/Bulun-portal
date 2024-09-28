@@ -13,6 +13,7 @@ import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import { useLocation, useNavigate } from "react-router-dom"; // Импортируем useNavigate для перехода
 import AccountHome from "../../account_pages/accont_home/AccountHome";
+import AcBreadcrumbs from "../accunt_breadcrumbs/AcBreadcrumbs";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
@@ -141,6 +142,7 @@ const Header = () => {
         </div>
       </div>
       <Breadcrumbs history={history} />
+
     </div>
   );
 };

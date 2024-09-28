@@ -12,6 +12,8 @@ import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import { useLocation, useNavigate } from "react-router-dom"; // Импортируем useNavigate для перехода
+import AcBreadcrumbs from "../accunt_breadcrumbs/AcBreadcrumbs";
+import { Link } from "react-router-dom";
 
 const AccountHeader = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
@@ -53,7 +55,7 @@ const AccountHeader = () => {
   return (
     <div>
       <div className="bg-white ">
-        <div className="flex items-center justify-between mx-8 gap-[50px]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <h1 className="font-black text-lg text-[#000000]">
               Булунский Портал
@@ -80,24 +82,21 @@ const AccountHeader = () => {
 
           <div className="flex items-center gap-[50px]">
             <Separator orientation="vertical" className="h-20" />
-            <div className="flex items-center">Перейти на сайт</div>
+            <Link to="/" className="flex items-center">
+              Перейти на сайт
+            </Link>
             <Separator orientation="vertical" className="h-20" />
-            <div className="flex items-center">
-              <User
-                className="w-5 h-5 text-[#DADADA] cursor-pointer"
-                onClick={handleUserClick}
-              />
-              <span
-                className="font-medium text-base text-[#999999] cursor-pointer"
-                onClick={handleUserClick}
-              >
+            <Link to="/account-info" className="flex items-center">
+              <User className="w-5 h-5 cursor-pointer text-[#1875F0] mr-2" />
+
+              <span className="font-medium text-base text-[#999999] cursor-pointer">
                 Аккаунт
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
-      <Breadcrumbs history={history} />
+      <AcBreadcrumbs history={history} />
     </div>
   );
 };
