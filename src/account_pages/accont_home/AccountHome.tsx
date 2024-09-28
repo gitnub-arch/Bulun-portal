@@ -37,7 +37,7 @@ const AccountHome = () => {
   };
 
   return (
-    <div className="container max-w-[1250px] mx-auto mt-5 flex gap-8">
+    <div className="container max-w-[1140px] mx-auto mt-5 flex gap-8">
       <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff]">
         <div>
           <h2 className="text-[22px] font-semibold mb-5">Баланс аккаунта</h2>
@@ -104,7 +104,7 @@ const AccountHome = () => {
         <div className=" w-full bg-[#fff] py-[50px] px-[35px]">
           <p className="text-5 font-semibold">Статистика расхода трафика</p>
           <Separator className="my-5 max-w-[690px]" />
-          <div className="flex gap-20 mb-5">
+          <div className="flex gap-14 mb-5">
             <div>
               <div className="flex gap-[70px] mb-1">
                 <span className="text-sm text-[#a0a0a2]">Всего</span>
@@ -247,9 +247,6 @@ const AccountHome = () => {
           ))}
         </div>
       </div>
-      <Link to="/account-info" className="bottom-5 right-5">
-        <Button>НАЗАД</Button>
-      </Link>
     </div>
   );
 };

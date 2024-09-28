@@ -9,16 +9,27 @@ import {
 import { Separator } from "../../components/ui/separator";
 import { RussianRuble } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import Payment from "../../shared/popups/pay/Payment";
 
 const AccountPayment = () => {
   const [selectedDelivery, setSelectedDelivery] = useState(""); // State для выбранного способа доставки
+  const [isPaymentVisible, setIsPaymentVisible] = useState(false); // State для отображения компонента Payment
 
   const handleSelectDelivery = (option: string) => {
     setSelectedDelivery(option); // Установка выбранного способа доставки
   };
 
+  const handlePayment = () => {
+    setIsPaymentVisible(true); // Показать Payment компонент
+  };
+
+  // Если платеж виден, показываем только его
+  if (isPaymentVisible) {
+    return <Payment />;
+  }
+
   return (
-    <div className="container max-w-[1250px] mx-auto mt-5">
+    <div className="container max-w-[1140px] mx-auto mt-5">
       <h2 className="text-2xl font-semibold mb-5">Пополнение лицевого счёта</h2>
       <div className="flex gap-8">
         <div>
@@ -36,7 +47,7 @@ const AccountPayment = () => {
               </SelectContent>
             </Select>
           </div>
-          <div className="bg-[#fff] py-5 px-9 mt-5 max-w-[845px] rounded-lg">
+          <div className="bg-[#fff] py-5 px-9 mt-5 max-w-[750px] rounded-lg">
             <h2 className="text-2xl font-semibold mb-5">
               Текущий тарифный план
             </h2>
@@ -49,7 +60,7 @@ const AccountPayment = () => {
                   сложившаяся структура ранга, имеет важнешее составляющее
                 </p>
               </div>
-              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-7 ml-9">
+              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-6 ml-1">
                 <div className="flex items-center ">
                   <span className="text-[56px] text-[#1875F0] font-semibold">
                     12
@@ -115,12 +126,19 @@ const AccountPayment = () => {
           <div className="flex items-center gap-11">
             <span className="text-lg text-[#76767A]">К оплате:</span>
             <div className="flex border-2 px-4 py-2">
-              <span className="text-center mt-1 mx-4 text-2xl font-semibold">540</span>
-              <Separator orientation="vertical" className="w-[2px] h-9 mr-4 ml-1"/>
-              <RussianRuble className="mt-2 "/>
+              <span className="text-center mt-1 mx-4 text-2xl font-semibold">
+                540
+              </span>
+              <Separator
+                orientation="vertical"
+                className="w-[2px] h-9 mr-4 ml-1"
+              />
+              <RussianRuble className="mt-2 " />
             </div>
           </div>
-          <Button className="w-full mt-3 p-4">Оплатить</Button>
+          <Button className="w-full mt-3 p-4" onClick={handlePayment}>
+            Оплатить
+          </Button>
         </aside>
       </div>
     </div>

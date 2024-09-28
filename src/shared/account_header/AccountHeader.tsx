@@ -55,7 +55,7 @@ const AccountHeader = () => {
   return (
     <div>
       <div className="bg-white ">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-[1140px] mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <h1 className="font-black text-lg text-[#000000]">
               Булунский Портал

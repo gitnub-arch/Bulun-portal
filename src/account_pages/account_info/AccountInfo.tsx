@@ -1,11 +1,10 @@
 import React from "react";
-import { Button } from "../../components/ui/button";
 import { Separator } from "../../components/ui/separator";
 import { PencilLine } from "lucide-react";
 
 const AccountInfo = () => {
   return (
-    <div className="container max-w-[1250px] mx-auto">
+    <div className="container max-w-[1140px] mx-auto">
       <div className="bg-[#fff] py-5 px-9 mt-5 rounded-lg">
         <div className="flex mb-5 items-center justify-between">
           <h2 className="text-2xl font-semibold ">Мои данные</h2>
@@ -20,21 +19,21 @@ const AccountInfo = () => {
           <p className="font-medium text-lg mb-3">Учётная информация</p>
 
           <div className="flex gap-5 mb-5">
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">ФИО</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">
                 Смирнов Тимур Серафимович
               </span>
             </div>
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">НОМЕР ТЕЛЕФОНА</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">
                 8 909 478-96-58
               </span>
             </div>
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">ДАТА РОЖДЕНИЯ</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">
@@ -46,7 +45,7 @@ const AccountInfo = () => {
           <p className="font-medium text-lg mb-3 mt-10">Адрес абонента</p>
 
           <div className="flex gap-7 mb-7">
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">
                 НАСЕЛЕННЫЙ ПУНКТ
               </span>
@@ -55,19 +54,19 @@ const AccountInfo = () => {
                 Владивосток
               </span>
             </div>
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px]">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">УЛИЦА</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">
                 Ленина
               </span>
             </div>
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px]">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">ДОМ</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">15</span>
             </div>
-            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px]">
+            <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
               <span className="text-gray-400 text-sm mr-3">КВАРТИРА</span>
               <Separator orientation="vertical" className="h-10 w-[2px]" />
               <span className="text-black font-medium text-lg ml-4">36</span>
@@ -80,3 +79,4 @@ const AccountInfo = () => {
 };
 
 export default AccountInfo;
+  

@@ -21,7 +21,7 @@ const AcBreadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
   };
 
   return (
-    <div className="mt-6 px-6 py-4 bg-white shadow-sm mx-auto max-w-7xl rounded-lg">
+    <div className="mt-6 px-6 py-4 bg-white shadow-sm mx-auto max-w-[1140px] rounded-lg">
       <div className="flex items-center gap-2">
         {/* Стрелка назад с обработчиком клика */}
         <ArrowLeft className="text-blue-500 cursor-pointer" onClick={goBack} />
