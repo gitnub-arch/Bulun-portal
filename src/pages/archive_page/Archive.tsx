@@ -25,7 +25,7 @@ const Archive = () => {
           ))}
 
           <Link
-            to="/add-file" // Заменил на строковый путь
+            to="/add-file" 
             className="px-14 py-7 absolute left-[28%] top-[100%] md:top-[56%]"
           >
             <Button>ДОБАВИТЬ</Button>

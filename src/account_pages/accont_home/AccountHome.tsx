@@ -8,9 +8,12 @@ import {
   Tablet,
   ArrowDownUp,
 } from "lucide-react";
+import network from "@/assets/network.svg";
 import { Button } from "../../components/ui/button";
 import { Separator } from "../../components/ui/separator";
 import { DEVICE_ITEM } from "./const";
+import AccountTarif from "../account_tarif/AccountTarif";
+import { Link } from "react-router-dom";
 
 const AccountHome = () => {
   const [activePeriod, setActivePeriod] = useState("day");
@@ -69,9 +72,12 @@ const AccountHome = () => {
             </div>
           </div>
 
-          <button className="w-full py-3 mt-5 border-[#1875F0] text-sm font-medium text-[#1875F0]">
+          <Link
+            to="/account-addTarif"
+            className="w-full block text-center py-3 mt-5 border-[#1875F0] text-sm font-medium text-[#1875F0] border"
+          >
             Добавить трафик
-          </button>
+          </Link>
           <Separator className="bg-[#DADADA] mt-7 mb-5 w-fulls" />
           <div>
             <p className="text-[22px] font-semibold mr-12">Тарифный план</p>
@@ -85,13 +91,16 @@ const AccountHome = () => {
               </div>
             </div>
           </div>
-          <button className="w-full py-3 mt-7 border-[#1875F0] text-sm font-medium text-[#1875F0]">
-            Сменить тариф
-          </button>
+          <Link
+            to="/account-tarifs"
+            className="w-full block text-center py-3 mt-5 border-[#1875F0] text-sm font-medium text-[#1875F0] border"
+          >
+            Добавить трафик
+          </Link>
         </div>
       </aside>
 
-      <div className="">
+      <div>
         <div className=" w-full bg-[#fff] py-[50px] px-[35px]">
           <p className="text-5 font-semibold">Статистика расхода трафика</p>
           <Separator className="my-5 max-w-[690px]" />
@@ -186,48 +195,61 @@ const AccountHome = () => {
             </div>
           </div>
         </div>
-        <div className=" w-full bg-[#fff] py-[50px] px-[35px] mt-5">
-          <div className="flex items-center justify-between">
-            <p className="text-5 font-semibold">Подключенные устройства</p>
+        <div className="w-full bg-[#fff] py-[50px] px-[35px] mt-5">
+          <div className="flex items-center justify-between -mt-8">
+            <p className="text-xl font-semibold">Подключенные устройства</p>
             <button className="px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
               Показать все устройства
             </button>
           </div>
-          <div className="flex items-center gap-[60px] mt-11">
+          <Separator className="my-5" />
+          {/* Заголовки колонок */}
+          <div className="grid grid-cols-4 mt-11 justify-between">
             <div className="flex items-center">
               <span>УСТРОЙСТВО</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center">
-              <span>РАСХОД ТРАФИКА</span>
+            <div className="flex items-center ml-4">
+              <p>РАСХОДТРАФИКА</p>
               <ChevronDown />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center ml-8">
               <span>IP АДРЕС</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center ml-7">
               <span>СТАТУС</span>
               <ChevronDown />
             </div>
           </div>
+
+          {/* Список устройств */}
           {DEVICE_ITEM.map((device, index) => (
-            <div className="flex items-center gap-[60px] mt-11" key={index}>
+            <div className="grid grid-cols-4  mt-11" key={index}>
               <div className="flex items-center">
-                {device.iconURL}
+                <img
+                  src={device.imgURL}
+                  alt=""
+                  className="mr-3 bg-[#F6F6FA] w-10 h-10 rounded-full pt-2"
+                />
                 <p>{device.name}</p>
               </div>
-              <div className="flex items-center">
-                <ArrowDownUp />
-                <p>{device.dataUsage}</p>
-                <p>ГИГ</p>
+              <div className="flex items-center ml-4">
+                <img src={network} alt="" />
+                <p className="ml-2">{device.dataUsage}</p>
+                <p className="ml-1">ГИГ</p>
               </div>
-              <p>{device.ipAddress}</p>
-              <p className="text-[#32BC78]">{device.status}</p>
+              <p className="mt-3 ml-8">{device.ipAddress}</p>
+              <p className="text-[#32BC78] bg-[#E7F9F0] py-3 rounded-full text-center ml-6">
+                {device.status}
+              </p>
             </div>
           ))}
         </div>
       </div>
+      <Link to="/account-info" className="bottom-5 right-5">
+        <Button>НАЗАД</Button>
+      </Link>
     </div>
   );
 };

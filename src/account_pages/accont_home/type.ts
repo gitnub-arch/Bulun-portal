@@ -1,5 +1,5 @@
 export default interface DeviceProps {
-  iconURL: string;
+  imgURL: string;
   name: string;
   dataUsage: string;
   ipAddress: string;
