@@ -31,7 +31,7 @@ const Afisha = () => {
     <div className="container max-w-[1250px] mx-auto mt-5">
       <h1 className="font-normal text-2xl text-[#333333]">Киноафиша</h1>
 
-      <div className="flex">
+      <div className="flex-col flex-wrap md:flex">
         <div className="max-w-[870px] min-h-[380px] rounded-[6px] mt-[60px]">
           {AFISHA_ITEM.map((afisha, index) => (
             <div className="mb-[120px]">
@@ -72,7 +72,7 @@ const Afisha = () => {
                 }}
               >
                 <Tabs value={activeTabs[index].day} key={index}>
-                  <TabsList className="">
+                  <TabsList>
                     {AFISHA_LIST.map((list) => (
                       <TabsTrigger
                         key={list.index}
