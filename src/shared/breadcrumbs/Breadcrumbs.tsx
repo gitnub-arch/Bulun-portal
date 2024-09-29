@@ -8,14 +8,14 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { BreadcrumbsProps } from "./type";
+import { BreadcrumbsProps } from "./type"; // Импортируйте типы
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
+  // Определяем последний элемент
   const lastItem = history[history.length - 1];
   
   return (
-    <div>
-    <div className="max-w-[1250px] mt-[60px] mr-100">
+    <div className="mt-[60px] ml-[90px]">
       <Breadcrumb className="text-xs font-normal">
         <BreadcrumbList>
           {history.map((item, index) => (
@@ -30,7 +30,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
               ) : (
                 // Отображаем текущую страницу как активную
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-[#8b8989]">
+                  <BreadcrumbPage className="text-[#E1E1E1]">
                     {item.label}
                     <hr className="mt-[2px] border-black border-[1px]" />
                   </BreadcrumbPage>
@@ -44,7 +44,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
         </BreadcrumbList>
       </Breadcrumb>
       <Separator orientation="horizontal" className="bg-[#DADADA] mt-5 w-[70%]" />
-    </div>
     </div>
   );
 };
