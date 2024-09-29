@@ -20,6 +20,8 @@ import AccountTarifs from "./account_pages/account_tarifs/AccountTarifs";
 import Account from "./account_pages/account/Account";
 import AccountInfo from "./account_pages/account_info/AccountInfo";
 import AccountPayment from "./account_pages/account_payment/AccountPayment";
+import Announcement from "./pages/announcement/Announcement";
+import SearchResults from "./pages/search_results/SearchResults";
 
 function App() {
   const location = useLocation(); // Получаем текущий путь
@@ -55,11 +57,13 @@ function App() {
         {/* Обычные маршруты */}
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
+        <Route path="/announcement" element={<Announcement />} />
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
+        <Route path="/search-result" element={<SearchResults />} />
       </Routes>
 
       <Footer />

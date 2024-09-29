@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react"; // Добавляем импорт useEffect
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   AlignJustifyIcon,
   ChevronDown,
@@ -8,20 +10,16 @@ import {
 } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { LINKS_ITEM } from "./const";
-import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { useLocation, useNavigate } from "react-router-dom"; // Импортируем useNavigate для перехода
-import AccountHome from "../../account_pages/accont_home/AccountHome";
-import AcBreadcrumbs from "../accunt_breadcrumbs/AcBreadcrumbs";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
   const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   const location = useLocation();
-  const navigate = useNavigate(); // Используем useNavigate для перехода
 
   const updateActiveLink = (link: LinkItemProps) => {
     setActiveLink(link);
@@ -48,9 +46,16 @@ const Header = () => {
     }
   }, [location]);
 
-  // Функция для перехода на AccountHome
   const handleUserClick = () => {
-    navigate("/account"); // Переход на страницу аккаунта
+    navigate("/account");
+  };
+
+  const handleSearchKeyPress = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter" && searchQuery.trim()) {
+      navigate(`/search-result?query=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   return (
@@ -72,8 +77,7 @@ const Header = () => {
             <User
               className="w-5 h-5 text-[#DADADA] cursor-pointer"
               onClick={handleUserClick}
-            />{" "}
-            {/* Клик для перехода */}
+            />
             <span
               className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
               onClick={handleUserClick}
@@ -116,6 +120,7 @@ const Header = () => {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyPress={handleSearchKeyPress}
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none"
                   />
