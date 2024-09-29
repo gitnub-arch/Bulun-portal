@@ -23,6 +23,8 @@ import AccountPayment from "./account_pages/account_payment/AccountPayment";
 import Announcement from "./pages/announcement/Announcement";
 import SearchResults from "./pages/search_results/SearchResults";
 import { Auth } from "./shared/authorization/Auth";
+import AccountDevices from "./account_pages/account_devices/AccountDevices";
+import DevicesReduct from "./account_pages/devices_reduct/DevicesReduct";
 
 function App() {
   const location = useLocation(); // Получаем текущий путь
@@ -35,6 +37,8 @@ function App() {
     "/account-info",
     "/account-tarifs",
     "/account-payment",
+    "/devices-reduct",
+    "/account-devices",
   ];
 
   // Проверка на нахождение на странице личного кабинета
@@ -51,14 +55,17 @@ function App() {
         {/* Маршруты личного кабинета */}
         <Route path="/account-info" element={<AccountInfo />} />
         <Route path="/account" element={<AccountHome />} />
+        <Route path="/account-devices" element={<AccountDevices />} />
         <Route path="/account-addTarif" element={<AccountTarif />} />
         <Route path="/account-tarifs" element={<AccountTarifs />} />
         <Route path="/account-payment" element={<AccountPayment />} />
+        <Route path="/devices-reduct" element={<DevicesReduct />} />
         {/* Обычные маршруты */}
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/announcement" element={<Announcement />} />{" "}
-        <Route path="/authorization" element={<Auth />} /> {/* Маршрут на авторизацию */}
+        <Route path="/authorization" element={<Auth />} />{" "}
+        {/* Маршрут на авторизацию */}
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
