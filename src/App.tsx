@@ -20,6 +20,7 @@ import AccountTarifs from "./account_pages/account_tarifs/AccountTarifs";
 import Account from "./account_pages/account/Account";
 import AccountInfo from "./account_pages/account_info/AccountInfo";
 import AccountPayment from "./account_pages/account_payment/AccountPayment";
+import Transport from "./pages/transport/Transport";
 
 function App() {
   const location = useLocation(); // Получаем текущий путь
@@ -60,6 +61,7 @@ function App() {
         <Route path="/add-file" element={<AddFile />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
+        <Route path="/transport" element={<Transport />} />
       </Routes>
 
       <Footer />
