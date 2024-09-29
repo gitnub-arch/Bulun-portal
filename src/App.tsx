@@ -17,6 +17,7 @@ import Weather from "./pages/weather_page/Weather";
 import AdministrationSection from "./pages/administration/AdministrationSection";
 import AddFile from "./shared/add_file/AddFile";
 import AccountHome from "./account_pages/accont_home/AccountHome";
+import Announcement from "./pages/announcement/Announcement";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/account" element={<AccountHome />} />
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
+          <Route path="/announcement" element={<Announcement />} />
           <Route path="/afisha" element={<Afisha />} />
           <Route path="/archive_page" element={<Archive />} />
           <Route path="/add-file" element={<AddFile />} />

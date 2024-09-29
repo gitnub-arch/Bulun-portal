@@ -3,7 +3,7 @@ import LinkItemProps from "./type";
 export const LINKS_ITEM: LinkItemProps[] = [
   { label: "Главная", href: "/" },
   { label: "Новости", href: "/news" },
-  { label: "Объявления", href: "#" },
+  { label: "Объявления", href: "/announcement" },
   { label: "Афиша", href: "/afisha" },
   { label: "Транспорт", href: "#" },
   { label: "Погода", href: "/weather" },
