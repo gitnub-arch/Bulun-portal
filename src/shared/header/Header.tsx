@@ -18,6 +18,7 @@ const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
   const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // состояние для открытия/закрытия бургер-меню
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,6 +37,7 @@ const Header = () => {
 
   const handleLinkClick = (link: LinkItemProps) => {
     updateActiveLink(link);
+    setIsMenuOpen(false); // Закрываем меню при выборе ссылки
   };
 
   useEffect(() => {
@@ -52,21 +54,25 @@ const Header = () => {
     navigate("/auth"); // Переход на страницу авторизации
   };
 
-  const handleClick = () => {
-    navigate("/search-results");
+  // Обработчик нажатия клавиши Enter в поисковой строке
+  const handleSearchKeyDown = (e) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      navigate(
+        `/search-result?query=${encodeURIComponent(searchQuery.trim())}`
+      );
+    }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') {
-      handleClick(); 
-    }
+  // Тоггл состояния меню
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
     <div>
       <div className="pt-6 bg-white">
         <div className="flex justify-between mx-8">
-          <div className="flex items-center">
+          <div className="hidden lg:flex items-center">
             <h4 className="mr-2 font-medium text-base text-[#76767A]">
               Тиксик
             </h4>
@@ -74,11 +80,16 @@ const Header = () => {
             <CloudRainWind className="ml-12 text-[#DADADA]" />
             <p className="ml-2 font-medium text-base text-[#666666]">+8°С</p>
           </div>
-          <h1 className="h-[24px] font-black text-lg text-[#000000]">
-            Булунский Портал
-          </h1>
+
+          <div className="flex justify-center w-full">
+            <h1 className="h-[24px] font-black text-lg text-[#000000]">
+              Булунский Портал
+            </h1>
+          </div>
+
+          {/* Блок "Войти" для десктопов */}
           <Auth>
-            <div className="flex">
+            <div className="hidden lg:flex">
               <User
                 className="w-5 h-5 text-[#DADADA] cursor-pointer"
                 onClick={handleUserClick}
@@ -95,13 +106,29 @@ const Header = () => {
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
           <div className="flex items-center">
-            <AlignJustifyIcon className="text-[#DADADA]" />
+            {/* Бургер-меню */}
+            <div className="block lg:hidden pb-5">
+              {isMenuOpen ? (
+                <X
+                  className="text-[#000000] cursor-pointer"
+                  onClick={toggleMenu}
+                />
+              ) : (
+                <AlignJustifyIcon
+                  className="text-[#000000] cursor-pointer"
+                  onClick={toggleMenu}
+                />
+              )}
+            </div>
+            {/* Вертикальный разделитель */}
             <Separator
               orientation="vertical"
-              className="bg-[#DADADA] -mt-6 ml-7"
+              className="bg-[#DADADA] -mt-6 ml-7 hidden lg:block"
             />
           </div>
-          <div className="flex justify-center items-center flex-grow gap-9">
+
+          {/* Основная навигация для десктопов */}
+          <div className="hidden lg:flex justify-center items-center flex-grow gap-9">
             {!isSearchActive ? (
               <div className="flex justify-center gap-9 w-full">
                 {LINKS_ITEM.map((link) => (
@@ -120,13 +147,13 @@ const Header = () => {
               </div>
             ) : (
               <div className="relative w-full">
-                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
+                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5 hidden ">
                   <Search className="text-[#999999] mr-2" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleSearchKeyDown} // Добавляем обработчик нажатия клавиши Enter
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none"
                   />
@@ -138,20 +165,61 @@ const Header = () => {
               </div>
             )}
           </div>
+
           <div className="flex items-center">
+            {/* Вертикальный разделитель */}
             <Separator
               orientation="vertical"
-              className="bg-[#DADADA] -mt-6 mr-7"
+              className="bg-[#DADADA] -mt-6 mr-7 hidden lg:block"
             />
             {!isSearchActive && (
               <Search
                 className="text-[#999999] cursor-pointer"
-                onClick={() => setIsSearchActive(true)}
+                onClick={() => {
+                  setIsSearchActive(true); // Активируем поиск
+                  setSearchQuery(""); // Очищаем поле поиска
+                }}
               />
             )}
           </div>
         </div>
       </div>
+
+      {/* Мобильное бургер-меню */}
+      {isMenuOpen && (
+        <div className="lg:hidden bg-white shadow-lg rounded-md p-4 absolute w-full top-0 left-0 z-50">
+          <div className="flex justify-between items-center">
+            <h1 className="font-black text-lg text-[#000000]">Меню</h1>
+            <X className="text-[#000000] cursor-pointer" onClick={toggleMenu} />
+          </div>
+          {LINKS_ITEM.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="block text-gray-600 font-medium mb-4"
+              onClick={() => handleLinkClick(link)}
+            >
+              {link.label}
+            </a>
+          ))}
+          {/* Войти в мобильной версии */}
+          <Auth>
+            <div className="flex mt-4">
+              <User
+                className="w-5 h-5 text-[#DADADA] cursor-pointer"
+                onClick={handleUserClick}
+              />
+              <span
+                className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
+                onClick={handleUserClick}
+              >
+                Войти
+              </span>
+            </div>
+          </Auth>
+        </div>
+      )}
+
       <Breadcrumbs history={history} />
     </div>
   );

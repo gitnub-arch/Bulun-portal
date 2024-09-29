@@ -56,7 +56,7 @@ const TimeBlock = ({ title, times }) => {
 
           {/* Иконка автобуса */}
           <Bus
-            className="text-[#0052cc] -mt-[4px] absolute"
+            className="text-[#0052cc] -mt-[4px] absolute hidden xl:flex"
             style={{
               top: selectedTime
                 ? `${times.indexOf(selectedTime) * (isSmallBlock ? 68 : 53)}px`
@@ -73,7 +73,7 @@ const TimeBlock = ({ title, times }) => {
 const Transport = () => {
   return (
     <div className="max-w-[1250px] mx-auto mt-5 flex">
-      <div className="max-w-[848px] ml-[70px]">
+      <div className="max-w-[848px] mx-auto">
         <h2 className="text-2xl mb-5">Расписание движения маршрутного такси</h2>
         <div className="bg-[#fff] px-8 p-5">
           <h3 className="text-center mb-5 text-xs font-semibold">
@@ -84,7 +84,7 @@ const Transport = () => {
           {/* Первая группа блоков */}
           <div className="grid grid-cols-3 gap-8 justify-between">
             {TRANSPORT_ITEM_GROUP_ONE.map((block, index) => (
-              <div key={index} className="flex]">
+              <div key={index} className="flex">
                 {/* Вертикальный сепаратор перед блоком, кроме первого */}
                 {index > 0 && (
                   <Separator orientation="vertical" className="mr-4" />
