@@ -1,43 +1,43 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import { RussianRuble } from "lucide-react";
-import { Separator } from "../../components/ui/separator";
-import { TARIFS_ITEM } from "./const";
+
+import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Button } from "../../components/ui/button";
-import Decoration from "../../shared/popups/decoration/Decoration";
+import { Button } from "@/components/ui/button";
+
+import Decoration from "@/shared/popups/decoration/Decoration";
+
+import { TARIFS_ITEM } from "./const";
 
 const AccountTarifs = () => {
-  // Состояние для отслеживания выбранного тарифа
   const [selectedTarif, setSelectedTarif] = useState<string>("tarif-1");
-
-  // Состояние для управления видимостью оформления
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = () => {
-    setIsSubmitted(true); // Показать Decoration и скрыть остальное
+    setIsSubmitted(true);
   };
 
   return (
-    <div className="container max-w-[1140px] mx-auto">
-      {/* Если оформление завершено, показываем Decoration */}
+    <div className="container max-w-[1140px] mx-auto px-4 md:px-0">
       {isSubmitted ? (
         <Decoration />
       ) : (
         <>
-          <div className="bg-[#fff] py-5 px-9 mt-5 max-w-[845px] rounded-lg">
+          <div className="bg-[#fff] py-5 px-4 md:px-9 mt-5 max-w-[845px] rounded-lg">
             <h2 className="text-2xl font-semibold mb-5">
               Текущий тарифный план
             </h2>
             <Separator className="mb-6" />
-            <div className="flex mb-5">
-              <div>
+            <div className="flex flex-col md:flex-row mb-5">
+              <div className="flex-1">
                 <p className="font-medium text-lg mb-3">Тариф «Начало»</p>
                 <p className="max-w-[360px] text-[#676767] leading-4 mb-9">
                   Значимость этих проблем настолько свойств очевидна, что
                   сложившаяся структура ранга, имеет важнешее составляющее
                 </p>
               </div>
-              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-7 ml-9">
+              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-7 md:ml-9">
                 <div className="flex items-center ">
                   <span className="text-[56px] text-[#1875F0] font-semibold">
                     12
@@ -56,13 +56,11 @@ const AccountTarifs = () => {
             </div>
           </div>
 
-          <div className="bg-[#fff] py-5 px-9 mt-5 max-w-[845px] rounded-lg">
+          <div className="bg-[#fff] py-5 px-4 md:px-9 mt-5 max-w-[845px] rounded-lg">
             <h2 className="text-2xl font-semibold mb-5">
               Выберите новый тарифный план
             </h2>
             <Separator className="mb-6" />
-
-            {/* Обернем тарифные блоки в RadioGroup */}
             <RadioGroup
               value={selectedTarif}
               onValueChange={(value) => setSelectedTarif(value)}
@@ -74,18 +72,16 @@ const AccountTarifs = () => {
                 return (
                   <div
                     key={item.id}
-                    className={`flex mb-5 border p-6 ${
+                    className={`flex flex-col md:flex-row mb-5 border p-6 ${
                       isSelected ? "border-[#1875F0]" : "border-gray-300"
                     }`}
                   >
-                    {/* Радиокнопка слева */}
                     <RadioGroupItem
                       value={currentTarif}
                       id={currentTarif}
-                      className="mr-4 mt-12 h-[20px] w-[20px]"
+                      className="mr-4 mt-2 h-[20px] w-[20px]"
                     />
-
-                    <div>
+                    <div className="flex-1">
                       <p className="font-medium text-lg mb-3">
                         Тариф «{item.name}»
                       </p>
@@ -93,7 +89,7 @@ const AccountTarifs = () => {
                         {item.description}
                       </p>
                     </div>
-                    <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-7 ml-9">
+                    <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-7 md:ml-9">
                       <div className="flex items-center ">
                         <span className="text-[56px] text-[#1875F0] font-semibold">
                           {item.quantity}
@@ -117,7 +113,10 @@ const AccountTarifs = () => {
             </RadioGroup>
             <Separator className="mb-6" />
             <div className="flex">
-              <Button className="ml-auto px-36 py-3" onClick={handleSubmit}>
+              <Button
+                className="ml-auto w-full md:w-auto px-4 py-3"
+                onClick={handleSubmit}
+              >
                 Оформить
               </Button>
             </div>

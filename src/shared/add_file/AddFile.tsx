@@ -1,7 +1,7 @@
-import React from "react";
-import { SquarePlus } from "lucide-react";
-import { PictureInPicture2 } from "lucide-react";
-import { Textarea } from "../../components/ui/textarea";
+import { SquarePlus, PictureInPicture2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "../../components/ui/button";
+
 import WeatherAside from "../global_aside/weather_aside/WeatherAside";
 import RoadstatusAside from "../global_aside/roadStatus_asede/RoadStatusAside";
 import FlightsAside from "../global_aside/flights_aside/FlightsAside";

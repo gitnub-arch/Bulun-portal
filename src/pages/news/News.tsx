@@ -5,12 +5,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
-import { Separator } from "../../components/ui/separator";
-import FlightsAside from "../../shared/global_aside/flights_aside/FlightsAside";
-import RoadstatusAside from "../../shared/global_aside/roadStatus_asede/RoadStatusAside";
-import WeatherAside from "../../shared/global_aside/weather_aside/WeatherAside";
+} from "@/components/ui/select";
+
 import { NEWSPAPER_ITEM } from "./const";
+
+import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
+import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
+import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
 
 const News = () => {
   return (

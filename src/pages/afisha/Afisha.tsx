@@ -1,10 +1,13 @@
-import { Separator } from "@/components/ui/separator";
-import { AFISHA_ITEM, AFISHA_LIST, AFISHA_TIME } from "./const";
-import { Tabs, TabsList, TabsTrigger } from "../../components/ui/tabs";
 import { useState } from "react";
-import WeatherAside from "../../shared/global_aside/weather_aside/WeatherAside";
-import RoadstatusAside from "../../shared/global_aside/roadStatus_asede/RoadStatusAside";
-import FlightsAside from "../../shared/global_aside/flights_aside/FlightsAside";
+
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+import { AFISHA_ITEM, AFISHA_LIST, AFISHA_TIME } from "./const";
+
+import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
+import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
+import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
 
 const Afisha = () => {
   const [activeTabs, setActiveTabs] = useState(
@@ -29,8 +32,7 @@ const Afisha = () => {
 
   return (
     <div className="container max-w-[1250px] mx-auto mt-5 overflow-hidden">
-      <h1 className="font-normal text-2xl text-[#333333]">Киноафиша</h1>
-
+      <h2 className="font-normal text-2xl text-[#333333]">Киноафиша</h2>
       <div className="flex-wrap md:flex">
         <div className="max-w-[870px] min-h-[380px] rounded-[6px] mt-[60px]">
           {AFISHA_ITEM.map((afisha, index) => (
@@ -60,7 +62,6 @@ const Afisha = () => {
                   </div>
                 </div>
               </div>
-
               <Separator className="bg-[#FFFFFF] mt-[26px] w-full" />
               <div
                 className="flex w-[820px] h-[50px] justify-between ml-7 rounded-[3px] mt-4"

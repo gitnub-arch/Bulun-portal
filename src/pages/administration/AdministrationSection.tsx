@@ -3,7 +3,7 @@ import { ADMINISTRATION_ITEMS } from "./const";
 const AdministrationSection = () => {
   return (
     <div className="max-w-[1250px] mx-auto mt-5">
-      <h2 className="text-2xl font-semibold mb-5 ml-7">Администрация</h2>
+      <h2 className="text-2xl font-medium mb-5 ml-7">Администрация</h2>
       <div className="space-y-6 bg-[#fff] p-7">
         {ADMINISTRATION_ITEMS.map((item) => (
           <div key={item.id} className="flex flex-col sm:flex-row items-center">

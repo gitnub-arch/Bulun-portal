@@ -1,17 +1,20 @@
-import { Button } from "@/components/ui/button";
 import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
 import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
 import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
+
 import { ARCHIVE_ITEM } from "./const";
+
 import mayak from "@/assets/images/mayak.jpg";
+
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Archive = () => {
   return (
     <div className="max-w-[1250px] mx-auto mt-5">
-      <h2 className="text-2xl font-semibold mb-5 ml-7">Архив</h2>
+      <h2 className="text-2xl font-medium mb-5 ml-7">Архив</h2>
       <div className="">
-        <div className="flex flex-wrap relative">
+        <div className="flex flex-wrap relative mb-40">
           {ARCHIVE_ITEM.map((item) => (
             <div
               key={item.id}
@@ -25,7 +28,7 @@ const Archive = () => {
           ))}
 
           <Link
-            to="/add-file" 
+            to="/add-file"
             className="px-14 py-7 absolute left-[28%] top-[100%] md:top-[56%]"
           >
             <Button>ДОБАВИТЬ</Button>

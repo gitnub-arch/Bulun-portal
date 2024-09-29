@@ -1,6 +1,7 @@
-import FlightsAside from "../../shared/global_aside/flights_aside/FlightsAside";
-import RoadstatusAside from "../../shared/global_aside/roadStatus_asede/RoadStatusAside";
-import WeatherAside from "../../shared/global_aside/weather_aside/WeatherAside";
+import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
+import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
+import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
+
 import { SEARCH_ITEM } from "./const";
 
 const SearchResults = () => {
@@ -9,7 +10,7 @@ const SearchResults = () => {
       <div>
         <div className="flex mb-5">
           <h2 className="text-2xl font-normal">Результат поиска:</h2>
-          <h1 className="font-semibold text-2xl"> Мероприятие</h1>
+          <h1 className="font-semibold text-2xl">Вот то что вы искали</h1>
         </div>
         <div className="flex-wrap grid grid-cols-3 gap-5">
           {SEARCH_ITEM.map((item) => (

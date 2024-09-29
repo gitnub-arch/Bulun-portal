@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Separator } from "../../components/ui/separator";
 import { PencilLine } from "lucide-react";
 
@@ -29,7 +29,6 @@ const AccountInfo = () => {
   };
 
   const handleSave = () => {
-    // Implement save logic here (e.g., send data to API)
     setIsEditing(false);
   };
 
@@ -51,7 +50,7 @@ const AccountInfo = () => {
         <div>
           <p className="font-medium text-lg mb-3">Учётная информация</p>
 
-          <div className="flex gap-7 mb-5">
+          <div className="flex gap-7 mb-5 flex-wrap md:flex-nowrap">
             {isEditing ? (
               <>
                 <div className="relative">
@@ -119,7 +118,7 @@ const AccountInfo = () => {
 
           <p className="font-medium text-lg mb-3 mt-10">Адрес абонента</p>
 
-          <div className="flex gap-7 mb-7">
+          <div className="flex gap-7 mb-7 flex-wrap md:flex-nowrap">
             {isEditing ? (
               <>
                 <div className="relative">

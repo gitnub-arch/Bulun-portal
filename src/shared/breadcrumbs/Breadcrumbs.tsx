@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,10 +9,11 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { BreadcrumbsProps } from "./type"; // Импортируйте типы
+
+
+import { BreadcrumbsProps } from "./type"; 
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
-  // Определяем последний элемент
   const lastItem = history[history.length - 1];
 
   return (
@@ -21,14 +23,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
           {history.map((item, index) => (
             <React.Fragment key={item.href}>
               {index < history.length - 1 ? (
-                // Отображаем ссылку для всех элементов, кроме последнего
                 <BreadcrumbItem className="gap-2">
                   <BreadcrumbLink href={item.href} className="text-gray-600">
                     {item.label}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
               ) : (
-                // Отображаем текущую страницу как активную
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-[#E1E1E1]">
                     {item.label}
@@ -36,8 +36,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               )}
-
-              {/* Отображаем разделитель между элементами, кроме последнего */}
               {index < history.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
           ))}

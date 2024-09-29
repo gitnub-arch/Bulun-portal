@@ -1,4 +1,3 @@
-// const.js
 import WeatherProps from "./type";
 import sun from "@/assets/weather_icons/sun.svg";
 import cloud from "@/assets/weather_icons/cloud.svg";

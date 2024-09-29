@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   RussianRuble,
   Globe,
   ArrowUp,
   ArrowDown,
   ChevronDown,
-  Tablet,
-  ArrowDownUp,
 } from "lucide-react";
 import network from "@/assets/network.svg";
-import { Button } from "../../components/ui/button";
-import { Separator } from "../../components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { DEVICE_ITEM } from "./const";
-import AccountTarif from "../account_tarif/AccountTarif";
 import { Link } from "react-router-dom";
 
 const AccountHome = () => {
@@ -37,8 +34,8 @@ const AccountHome = () => {
   };
 
   return (
-    <div className="container max-w-[1140px] mx-auto mt-5 flex gap-8">
-      <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff]">
+    <div className="container max-w-[1140px] mx-auto mt-5 flex flex-wrap gap-8 md:flex-nowrap">
+      <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff] ml-9 lg:ml-0">
         <div>
           <h2 className="text-[22px] font-semibold mb-5">Баланс аккаунта</h2>
           <div className="flex items-center mb-5">
@@ -101,17 +98,17 @@ const AccountHome = () => {
       </aside>
 
       <div>
-        <div className=" w-full bg-[#fff] py-[50px] px-[35px]">
+        <div className=" bg-[#fff] py-[50px] px-[35px] ml-9 w-[350px] lg:w-full lg:ml-0">
           <p className="text-5 font-semibold">Статистика расхода трафика</p>
           <Separator className="my-5 max-w-[690px]" />
           <div className="flex gap-14 mb-5">
-            <div>
-              <div className="flex gap-[70px] mb-1">
+            <div className="">
+              <div className="flex gap-[50px] lg:gap-[70px] mb-1 ">
                 <span className="text-sm text-[#a0a0a2]">Всего</span>
                 <span className="text-sm text-[#a0a0a2]">Принято</span>
                 <span className="text-sm text-[#a0a0a2]">Передано</span>
               </div>
-              <div className="flex gap-10">
+              <div className="flex gap-4 lg:gap-10">
                 <div className="flex items-center">
                   <p className="flex text-xl font-medium">8.27 </p>
                   <p className="text-[#a0a0a2] text-[12px] mt-1 ml-1">ГИГ</p>
@@ -174,9 +171,12 @@ const AccountHome = () => {
                 </div>
               ))}
             </div>
-            <div className="flex gap-[60px] items-end w-full h-[250px] z-10">
+            <div className="flex gap-2 lg:gap-[60px] items-end w-full h-[250px] z-10">
               {trafficData[activePeriod].received.map((height, index) => (
-                <div className="flex flex-col items-center ml-6" key={index}>
+                <div
+                  className="flex flex-col items-center ml-3 lg:ml-6"
+                  key={index}
+                >
                   <div
                     className="bg-[#3CD0F0] w-[10px] rounded-full mb-1"
                     style={{ height: `${height}px` }}
@@ -209,15 +209,15 @@ const AccountHome = () => {
               <span>УСТРОЙСТВО</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-4">
+            <div className="flex items-center ml-9 gl:ml-4">
               <p>РАСХОДТРАФИКА</p>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-8">
+            <div className="flex items-center ml-24 lg:ml-8">
               <span>IP АДРЕС</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-7">
+            <div className="flex items-center ml-7 hidden lg:block">
               <span>СТАТУС</span>
               <ChevronDown />
             </div>
@@ -225,7 +225,7 @@ const AccountHome = () => {
 
           {/* Список устройств */}
           {DEVICE_ITEM.map((device, index) => (
-            <div className="grid grid-cols-4  mt-11" key={index}>
+            <div className="grid grid-cols-4 mt-11" key={index}>
               <div className="flex items-center">
                 <img
                   src={device.imgURL}
@@ -234,13 +234,13 @@ const AccountHome = () => {
                 />
                 <p>{device.name}</p>
               </div>
-              <div className="flex items-center ml-4">
+              <div className="flex items-center ml-14 lg:ml-4">
                 <img src={network} alt="" />
                 <p className="ml-2">{device.dataUsage}</p>
                 <p className="ml-1">ГИГ</p>
               </div>
-              <p className="mt-3 ml-8">{device.ipAddress}</p>
-              <p className="text-[#32BC78] bg-[#E7F9F0] py-3 rounded-full text-center ml-6">
+              <p className="mt-3 ml-20 lg:ml-8">{device.ipAddress}</p>
+              <p className="text-[#32BC78] bg-[#E7F9F0] py-3 rounded-full text-center hidden lg:ml-6">
                 {device.status}
               </p>
             </div>
