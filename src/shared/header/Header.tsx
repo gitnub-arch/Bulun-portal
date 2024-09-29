@@ -52,6 +52,16 @@ const Header = () => {
     navigate("/auth"); // Переход на страницу авторизации
   };
 
+  const handleClick = () => {
+    navigate("/search-results");
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleClick(); 
+    }
+  };
+
   return (
     <div>
       <div className="pt-6 bg-white">
@@ -116,6 +126,7 @@ const Header = () => {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none"
                   />
