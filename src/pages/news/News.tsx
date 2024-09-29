@@ -16,7 +16,7 @@ const News = () => {
   return (
     <div className="bg-[#F4F4F4] max-w-[1250px] mx-auto mt-5 flex">
       <div className="container m-auto w-[877px]">
-        <div className="flex justify-between">
+        <div className="justify-between md:flex">
           <h2 className="font-normal text-2xl pt-1">Газета «Маяк Арктики»</h2>
           <div className="flex">
             <h4 className="mt-[7px] mr-2">Фильтр: </h4>
