@@ -11,17 +11,16 @@ import { LINKS_ITEM } from "./const";
 import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { useLocation, useNavigate } from "react-router-dom"; // Импортируем useNavigate для перехода
-import AccountHome from "../../account_pages/accont_home/AccountHome";
-import AcBreadcrumbs from "../accunt_breadcrumbs/AcBreadcrumbs";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Auth } from "../authorization/Auth"; // Компонент авторизации
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
   const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   const location = useLocation();
-  const navigate = useNavigate(); // Используем useNavigate для перехода
 
   const updateActiveLink = (link: LinkItemProps) => {
     setActiveLink(link);
@@ -48,9 +47,9 @@ const Header = () => {
     }
   }, [location]);
 
-  // Функция для перехода на AccountHome
+  // Функция для перехода на страницу авторизации
   const handleUserClick = () => {
-    navigate("/account"); // Переход на страницу аккаунта
+    navigate("/auth"); // Переход на страницу авторизации
   };
 
   return (
@@ -68,19 +67,20 @@ const Header = () => {
           <h1 className="h-[24px] font-black text-lg text-[#000000]">
             Булунский Портал
           </h1>
-          <div className="flex">
-            <User
-              className="w-5 h-5 text-[#DADADA] cursor-pointer"
-              onClick={handleUserClick}
-            />{" "}
-            {/* Клик для перехода */}
-            <span
-              className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-              onClick={handleUserClick}
-            >
-              Войти
-            </span>
-          </div>
+          <Auth>
+            <div className="flex">
+              <User
+                className="w-5 h-5 text-[#DADADA] cursor-pointer"
+                onClick={handleUserClick}
+              />
+              <span
+                className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
+                onClick={handleUserClick}
+              >
+                Войти
+              </span>
+            </div>
+          </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">

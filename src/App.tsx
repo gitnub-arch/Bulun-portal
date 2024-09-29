@@ -20,7 +20,9 @@ import AccountTarifs from "./account_pages/account_tarifs/AccountTarifs";
 import Account from "./account_pages/account/Account";
 import AccountInfo from "./account_pages/account_info/AccountInfo";
 import AccountPayment from "./account_pages/account_payment/AccountPayment";
-import Transport from "./pages/transport/Transport";
+import Announcement from "./pages/announcement/Announcement";
+import SearchResults from "./pages/search_results/SearchResults";
+import { Auth } from "./shared/authorization/Auth";
 
 function App() {
   const location = useLocation(); // Получаем текущий путь
@@ -52,18 +54,19 @@ function App() {
         <Route path="/account-addTarif" element={<AccountTarif />} />
         <Route path="/account-tarifs" element={<AccountTarifs />} />
         <Route path="/account-payment" element={<AccountPayment />} />
-
         {/* Обычные маршруты */}
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
+        <Route path="/announcement" element={<Announcement />} />{" "}
+        <Route path="/authorization" element={<Auth />} /> {/* Маршрут на авторизацию */}
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
-        <Route path="/transport" element={<Transport />} />
+        <Route path="/search-result" element={<SearchResults />} />
       </Routes>
-
+      <Auth />
       <Footer />
     </div>
   );
