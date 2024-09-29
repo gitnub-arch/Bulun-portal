@@ -35,7 +35,7 @@ const Afisha = () => {
         <div className="max-w-[870px] min-h-[380px] rounded-[6px] mt-[60px]">
           {AFISHA_ITEM.map((afisha, index) => (
             <div className="mb-[120px]">
-              <div className="flex pr-7 bg-[#fff] rounded-xl">
+              <div className="md:flex pr-7 bg-[#fff] rounded-xl">
                 <img
                   src={afisha.imgUrl}
                   alt=""
