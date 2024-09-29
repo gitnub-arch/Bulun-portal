@@ -110,20 +110,7 @@ const Header = () => {
               </div>
             ) : (
               <div className="relative w-full">
-                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
-                  <Search className="text-[#999999] mr-2" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Введите фразу для поиска"
-                    className="flex-grow text-base outline-none"
-                  />
-                  <X
-                    className="text-[#999999] cursor-pointer"
-                    onClick={() => setIsSearchActive(false)}
-                  />
-                </div>
+                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5"></div>
               </div>
             )}
           </div>
