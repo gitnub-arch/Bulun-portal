@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -7,60 +7,61 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "../../components/ui/separator";
-import { RussianRuble } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import Payment from "../../shared/popups/pay/Payment";
+
+import { RussianRuble } from "lucide-react";
+
+import Payment from "@/shared/popups/pay/Payment";
 
 const AccountPayment = () => {
-  const [selectedDelivery, setSelectedDelivery] = useState(""); // State для выбранного способа доставки
-  const [isPaymentVisible, setIsPaymentVisible] = useState(false); // State для отображения компонента Payment
+  const [selectedDelivery, setSelectedDelivery] = useState("");
+  const [isPaymentVisible, setIsPaymentVisible] = useState(false);
 
   const handleSelectDelivery = (option: string) => {
-    setSelectedDelivery(option); // Установка выбранного способа доставки
+    setSelectedDelivery(option);
   };
 
   const handlePayment = () => {
-    setIsPaymentVisible(true); // Показать Payment компонент
+    setIsPaymentVisible(true);
   };
 
-  // Если платеж виден, показываем только его
   if (isPaymentVisible) {
     return <Payment />;
   }
 
   return (
-    <div className="container max-w-[1140px] mx-auto mt-5">
+    <div className="container mx-auto mt-5 px-4 md:px-0">
       <h2 className="text-2xl font-semibold mb-5">Пополнение лицевого счёта</h2>
-      <div className="flex gap-8">
-        <div>
-          <div className="bg-white py-5 px-[35px] rounded-lg w-full">
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex-1">
+          <div className="bg-white py-5 px-4 rounded-lg w-full">
             <p className="text-xl font-semibold mb-5">Способ пополнения</p>
 
             <Select>
               <SelectTrigger className="w-full bg-[#F3F3F4]">
-                <SelectValue placeholder="Theme" />
+                <SelectValue placeholder="Выберите способ оплаты" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                <SelectItem value="light">Банковской картой</SelectItem>
+                <SelectItem value="dark">Кредитной картой</SelectItem>
+                <SelectItem value="system">Чеком</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div className="bg-[#fff] py-5 px-9 mt-5 max-w-[750px] rounded-lg">
+          <div className="bg-[#fff] py-5 px-4 mt-5 rounded-lg">
             <h2 className="text-2xl font-semibold mb-5">
               Текущий тарифный план
             </h2>
             <Separator className="mb-6" />
-            <div className="flex mb-5">
-              <div>
+            <div className="flex flex-col md:flex-row mb-5">
+              <div className="flex-1">
                 <p className="font-medium text-lg mb-3">Тариф «Начало»</p>
                 <p className="max-w-[360px] text-[#676767] leading-4 mb-9">
                   Значимость этих проблем настолько свойств очевидна, что
-                  сложившаяся структура ранга, имеет важнешее составляющее
+                  сложившаяся структура ранга, имеет важнеее составляющее
                 </p>
               </div>
-              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-6 ml-1">
+              <div className="flex items-center bg-[#fff] shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-lg py-5 px-6">
                 <div className="flex items-center ">
                   <span className="text-[56px] text-[#1875F0] font-semibold">
                     12
@@ -83,7 +84,7 @@ const AccountPayment = () => {
             </Button>
           </div>
         </div>
-        <aside className="py-[30px] px-[30px] max-w-[360px] max-h-[425px] bg-[#fff]">
+        <aside className="py-[30px] px-4 md:px-[30px] max-w-[360px] bg-[#fff] mt-5 md:mt-0">
           <p className="text-xl font-semibold">Способ доставки чека</p>
           <p className="text-[#76767A] text-xs">
             После оплаты вам будет направлен кассовый чек
@@ -123,7 +124,7 @@ const AccountPayment = () => {
           </div>
 
           <Separator className="mt-7 mb-3" />
-          <div className="flex items-center gap-11">
+          <div className="flex items-center gap-3">
             <span className="text-lg text-[#76767A]">К оплате:</span>
             <div className="flex border-2 px-4 py-2">
               <span className="text-center mt-1 mx-4 text-2xl font-semibold">

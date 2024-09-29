@@ -1,11 +1,10 @@
-import React from "react";
 import { HOME_ITEM } from "./const";
-import { Link } from "react-router-dom"; // Make sure to import Link from react-router-dom
+import { Link } from "react-router-dom"; 
 
 const Home = () => {
   return (
     <div className="max-w-[1250px] mx-auto mt-5">
-      <h2 className="text-2xl font-semibold mb-5 ml-7">Главная</h2>
+      <h2 className="text-2xl font-medium mb-5 ml-7">Главная</h2>
       <div className="flex flex-wrap">
         {HOME_ITEM.map((item) => (
           <Link

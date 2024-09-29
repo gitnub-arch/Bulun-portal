@@ -1,7 +1,9 @@
-import FlightsAside from "../../shared/global_aside/flights_aside/FlightsAside";
-import RoadstatusAside from "../../shared/global_aside/roadStatus_asede/RoadStatusAside";
-import WeatherAside from "../../shared/global_aside/weather_aside/WeatherAside";
+import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
+import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
+import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
+
 import { ANNOUNCEMENT_ITEMS } from "./const";
+
 import PlayIcon from "@/assets/announcement/play.svg";
 
 const Announcement = () => {

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Separator } from "../../components/ui/separator";
+import { useState } from "react";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/tabs";
-import FlightsAside from "../../shared/global_aside/flights_aside/FlightsAside";
-import RoadstatusAside from "../../shared/global_aside/roadStatus_asede/RoadStatusAside";
+} from "@/components/ui/tabs";
+import FlightsAside from "@/shared/global_aside/flights_aside/FlightsAside";
+import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAside";
 import {
   WEATHER_ITEM_FIRST,
   WEATHER_ITEM_SECOND,
@@ -68,31 +67,46 @@ const Weather = () => {
             )}
           </TabsList>
 
-          <TabsContent className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]" value="first">
+          <TabsContent
+            className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]"
+            value="first"
+          >
             {WEATHER_ITEM_FIRST.map((item) => (
               <WeatherDetail item={item} key={item.time} />
             ))}
           </TabsContent>
 
-          <TabsContent className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]" value="second">
+          <TabsContent
+            className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]"
+            value="second"
+          >
             {WEATHER_ITEM_SECOND.map((item) => (
               <WeatherDetail item={item} key={item.time} />
             ))}
           </TabsContent>
 
-          <TabsContent className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]" value="third">
+          <TabsContent
+            className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]"
+            value="third"
+          >
             {WEATHER_ITEM_THIRD.map((item) => (
               <WeatherDetail item={item} key={item.time} />
             ))}
           </TabsContent>
 
-          <TabsContent className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]" value="fourth">
+          <TabsContent
+            className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]"
+            value="fourth"
+          >
             {WEATHER_ITEM_FOURTH.map((item) => (
               <WeatherDetail item={item} key={item.time} />
             ))}
           </TabsContent>
 
-          <TabsContent className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]" value="fifth">
+          <TabsContent
+            className="w-[900px] shadow-[0px_3px_10px_rgba(0,0,0,0.1)]"
+            value="fifth"
+          >
             {WEATHER_ITEM_FIFTH.map((item) => (
               <WeatherDetail item={item} key={item.time} />
             ))}
