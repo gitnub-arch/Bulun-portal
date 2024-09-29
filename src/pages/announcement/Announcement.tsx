@@ -9,7 +9,7 @@ const Announcement = () => {
     <div className="bg-[#F4F4F4] max-w-[1250px] mx-auto mt-5 flex">
      <div>
       <h1 className="font-normal text-2xl pl-6">Видео</h1>
-      <div className="grid grid-cols-3 gap-4 p-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-5">
         {ANNOUNCEMENT_ITEMS.map((items) => (
           <div key={items.id} className="relative">
               <img src={items.imgURL} alt={items.title} className="rounded-lg" />
