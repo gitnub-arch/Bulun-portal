@@ -19,9 +19,10 @@ import AccountInfo from "./account_pages/account_info/AccountInfo";
 import AccountPayment from "./account_pages/account_payment/AccountPayment";
 import Announcement from "./pages/announcement/Announcement";
 import SearchResults from "./pages/search_results/SearchResults";
-import { Auth } from "./shared/authorization/Auth";
+
 import AccountDevices from "./account_pages/account_devices/AccountDevices";
 import DevicesReduct from "./account_pages/devices_reduct/DevicesReduct";
+import Transport from "./pages/transport/Transport";
 
 function App() {
   const location = useLocation();
@@ -57,11 +58,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/announcement" element={<Announcement />} />{" "}
-        <Route path="/authorization" element={<Auth />} />{" "}
         {/* Маршрут на авторизацию */}
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
+        <Route path="/authorization" element={<Auth />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
         <Route path="/search-result" element={<SearchResults />} />
