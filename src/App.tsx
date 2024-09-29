@@ -54,11 +54,11 @@ function App() {
         <Route path="/account-addTarif" element={<AccountTarif />} />
         <Route path="/account-tarifs" element={<AccountTarifs />} />
         <Route path="/account-payment" element={<AccountPayment />} />
-
         {/* Обычные маршруты */}
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
-        <Route path="/announcement" element={<Announcement />} />
+        <Route path="/announcement" element={<Announcement />} />{" "}
+        <Route path="/authorization" element={<Auth />} /> {/* Маршрут на авторизацию */}
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
@@ -66,7 +66,7 @@ function App() {
         <Route path="/administration" element={<AdministrationSection />} />
         <Route path="/search-result" element={<SearchResults />} />
       </Routes>
-      <Auth/>
+      <Auth />
       <Footer />
     </div>
   );

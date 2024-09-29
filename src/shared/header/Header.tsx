@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react"; // Добавляем импорт useEffect
-import { useNavigate, useLocation } from "react-router-dom";
 import {
   AlignJustifyIcon,
   ChevronDown,
@@ -10,10 +8,11 @@ import {
 } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { LINKS_ITEM } from "./const";
+import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { Auth } from "../authorization/Auth";
-import { Button } from "../../components/ui/button";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Auth } from "../authorization/Auth"; // Компонент авторизации
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
@@ -48,16 +47,9 @@ const Header = () => {
     }
   }, [location]);
 
+  // Функция для перехода на страницу авторизации
   const handleUserClick = () => {
-    navigate("/account");
-  };
-
-  const handleSearchKeyPress = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (event.key === "Enter" && searchQuery.trim()) {
-      navigate(`/search-result?query=${encodeURIComponent(searchQuery)}`);
-    }
+    navigate("/auth"); // Переход на страницу авторизации
   };
 
   return (
@@ -75,20 +67,20 @@ const Header = () => {
           <h1 className="h-[24px] font-black text-lg text-[#000000]">
             Булунский Портал
           </h1>
-          <div className="flex">
-            <User
-              className="w-5 h-5 text-[#DADADA] cursor-pointer"
-              onClick={handleUserClick}
-            />
-            <Auth>
-            <span
-              className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-              onClick={handleUserClick}
-            >
-              Войти
-            </span>
-            </Auth>
-          </div>
+          <Auth>
+            <div className="flex">
+              <User
+                className="w-5 h-5 text-[#DADADA] cursor-pointer"
+                onClick={handleUserClick}
+              />
+              <span
+                className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
+                onClick={handleUserClick}
+              >
+                Войти
+              </span>
+            </div>
+          </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
@@ -124,7 +116,6 @@ const Header = () => {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={handleSearchKeyPress}
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none"
                   />
