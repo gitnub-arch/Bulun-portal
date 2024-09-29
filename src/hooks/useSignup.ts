@@ -1,15 +1,13 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useContext, useState } from 'react';
-import { auth, db, storage } from '../firebase/config';
+import { auth, db } from '../firebase/config'; // Удалили import storage
 import { AuthContext } from '../context/AuthContext';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 
 interface SignupProps {
   email: string;
   password: string;
-  displayName: string;
-  avatar: File;
+  userName: string; // Используем displayName вместо userName
 }
 
 export const useSignup = () => {
@@ -17,7 +15,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState<boolean>(false);
   const { dispatch } = useContext<any>(AuthContext);
 
-  const signup = async ({ email, password, displayName, avatar }: SignupProps) => {
+  const signup = async ({ email, password, userName }: SignupProps) => {
     setError(null);
     setIsPending(true);
 
@@ -28,29 +26,24 @@ export const useSignup = () => {
         password
       );
 
-      if (!response) {
+      if (!response.user) {
         setError('Не получилось создать пользователя');
+        return;
       }
 
-      const uploadPath = `avatars/${response.user.uid}/${avatar.name}`;
-      const storageRef = ref(storage, uploadPath);
-      await uploadBytes(storageRef, avatar);
-      const photoURL = await getDownloadURL(storageRef);
-
       await updateProfile(response.user, {
-        displayName,
-        photoURL,
+        displayName: userName, // Используем displayName для имени пользователя в Firebase
       });
 
       await setDoc(doc(db, 'users', response.user.uid), {
         online: true,
-        displayName,
-        photoURL,
+        userName, // Используем displayName для имени пользователя в Firebase
       });
 
       dispatch({ type: 'LOGIN', payload: response.user });
     } catch (err: any) {
       setError(err.message);
+      console.error("Ошибка создания пользователя:", err); 
     } finally {
       setIsPending(false);
     }

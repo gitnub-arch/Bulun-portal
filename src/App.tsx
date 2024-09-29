@@ -22,7 +22,7 @@ import AccountInfo from "./account_pages/account_info/AccountInfo";
 import AccountPayment from "./account_pages/account_payment/AccountPayment";
 import Announcement from "./pages/announcement/Announcement";
 import SearchResults from "./pages/search_results/SearchResults";
-import { Auth } from "./shared/authorization/Auth";
+import  { Auth }  from "./shared/authorization/Auth";
 import Transport from "./pages/transport/Transport";
 
 function App() {

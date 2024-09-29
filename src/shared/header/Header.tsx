@@ -12,7 +12,8 @@ import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Auth } from "../authorization/Auth"; // Компонент авторизации
+import { Auth } from "../authorization/Auth";
+// Компонент авторизации
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);

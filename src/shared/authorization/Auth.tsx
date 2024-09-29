@@ -13,12 +13,32 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
+import { useLogin } from "../../hooks/useLogin";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export function Auth(props: LayoutProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signup } = useSignup();
+  const { login } = useLogin();
+
+  const handleLogin = async () => {
+    await login(email, password);
+  };
+  const handleSignUp = async () => {
+    await signup({
+      email,
+      password,
+      avatar: null,
+    });
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{props.children}</DialogTrigger>
@@ -60,8 +80,8 @@ export function Auth(props: LayoutProps) {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button asChild className="w-full">
-                  <Link to="/account">Войти</Link>
+                <Button  className="w-full" onClick={handleLogin}>
+                  Войти
                 </Button>
               </CardFooter>
             </Card>
@@ -88,8 +108,8 @@ export function Auth(props: LayoutProps) {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button asChild className="w-full">
-                  <Link to="/account">Войти</Link>
+                <Button  className="w-full" onClick={handleSignUp}>
+                  Войти
                 </Button>
               </CardFooter>
             </Card>
