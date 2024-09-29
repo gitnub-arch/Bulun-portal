@@ -147,15 +147,16 @@ const Header = () => {
               </div>
             ) : (
               <div className="relative w-full">
-                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5 hidden ">
+                <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
                   <Search className="text-[#999999] mr-2" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={handleSearchKeyDown} // Добавляем обработчик нажатия клавиши Enter
+                    onKeyDown={handleSearchKeyDown} // Обработчик нажатия клавиши Enter
                     placeholder="Введите фразу для поиска"
-                    className="flex-grow text-base outline-none"
+                    className="flex-grow text-base outline-none 
+                 sm:w-1/2 md:w-auto w-24" // Smaller width on mobile (24) and larger on desktop
                   />
                   <X
                     className="text-[#999999] cursor-pointer"
