@@ -84,7 +84,7 @@ const Transport = () => {
           {/* Первая группа блоков */}
           <div className="grid grid-cols-3 gap-8 justify-between">
             {TRANSPORT_ITEM_GROUP_ONE.map((block, index) => (
-              <div key={index} className="flex">
+              <div key={index} className="flex]">
                 {/* Вертикальный сепаратор перед блоком, кроме первого */}
                 {index > 0 && (
                   <Separator orientation="vertical" className="mr-4" />
