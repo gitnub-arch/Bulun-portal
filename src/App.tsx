@@ -23,6 +23,7 @@ import AccountPayment from "./account_pages/account_payment/AccountPayment";
 import Announcement from "./pages/announcement/Announcement";
 import SearchResults from "./pages/search_results/SearchResults";
 import { Auth } from "./shared/authorization/Auth";
+import Transport from "./pages/transport/Transport";
 
 function App() {
   const location = useLocation(); // Получаем текущий путь
@@ -65,6 +66,7 @@ function App() {
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
         <Route path="/search-result" element={<SearchResults />} />
+        <Route path="/transport" element={<Transport />} />
       </Routes>
       <Auth />
       <Footer />
