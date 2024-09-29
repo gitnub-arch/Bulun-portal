@@ -50,7 +50,7 @@ const Afisha = () => {
                   <span className="ml-1 text-[#1875F0] underline">
                     Показать полностью
                   </span>
-                  <div className="flex mt-3">
+                  <div className="flex mt-3 pb-4">
                     <p className="mr-10 text-[#333333] opacity-50 font-normal text-sm">
                       {afisha.duration}
                     </p>
@@ -113,7 +113,7 @@ const Afisha = () => {
                         key={item.index}
                         className={`${
                           item.time === activeTabs[index].time
-                            ? "!text-[#1875F0] border-[#1875F0] border-[3px]"
+                            ? "!text-[#1875F0] border-[#1875F0] border-[3px] h-11"
                             : "border-[#F2F2F2]"
                         }`}
                         value={item.time}

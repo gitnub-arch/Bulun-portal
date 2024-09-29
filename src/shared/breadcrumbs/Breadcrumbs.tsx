@@ -13,7 +13,7 @@ import { BreadcrumbsProps } from "./type"; // Импортируйте типы
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
   // Определяем последний элемент
   const lastItem = history[history.length - 1];
-  
+
   return (
     <div className="mt-[60px] ml-[90px]">
       <Breadcrumb className="text-xs font-normal">
@@ -43,7 +43,10 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ history }) => {
           ))}
         </BreadcrumbList>
       </Breadcrumb>
-      <Separator orientation="horizontal" className="bg-[#DADADA] mt-5 w-[70%]" />
+      <Separator
+        orientation="horizontal"
+        className="bg-[#DADADA] mt-5 w-[70%]"
+      />
     </div>
   );
 };

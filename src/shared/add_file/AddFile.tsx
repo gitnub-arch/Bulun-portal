@@ -63,7 +63,10 @@ const AddFile = () => {
                   />
                 </div>
               </div>
-              <Textarea placeholder="Введите текст сообщения" className="mt-8 max-h-24" />
+              <Textarea
+                placeholder="Введите текст сообщения"
+                className="mt-8 max-h-24"
+              />
               <Select className="p-3">
                 <SelectTrigger className="w-full mt-8 bg-[#EFEFEF]">
                   <SelectValue placeholder="Выберите куда будет направлен файл" />

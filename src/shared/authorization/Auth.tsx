@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -27,9 +28,7 @@ export function Auth(props: LayoutProps) {
             <TabsTrigger value="auth">Авторизация</TabsTrigger>
             <TabsTrigger value="registration">Регистрация</TabsTrigger>
           </TabsList>
-          <TabsContent
-            value="auth"
-          >
+          <TabsContent value="auth">
             <Card>
               <CardHeader>
                 <CardTitle className="text-center font-semibold text-[22px]">
@@ -39,13 +38,13 @@ export function Auth(props: LayoutProps) {
               </CardHeader>
               <CardContent className="space-y-5">
                 <div>
-                  <Input id="username" placeholder="Логин"  type="email"/>
+                  <Input id="username" placeholder="Логин" type="email" />
                 </div>
                 <div>
-                  <Input id="password" placeholder="Пароль" type="password"/>
+                  <Input id="password" placeholder="Пароль" type="password" />
                 </div>
                 <div className="flex items-center gap-3 pt-6 pb-4">
-                <Checkbox id="terms" className="border-[#A0A0A2]"/>
+                  <Checkbox id="terms" className="border-[#A0A0A2]" />
                   <label
                     htmlFor="terms"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -61,8 +60,8 @@ export function Auth(props: LayoutProps) {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button type="submit" className="w-full">
-                  Войти
+                <Button asChild className="w-full">
+                  <Link to="/account">Войти</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -71,7 +70,9 @@ export function Auth(props: LayoutProps) {
           <TabsContent value="registration">
             <Card>
               <CardHeader>
-                <CardTitle className="text-center font-semibold text-[22px]">Регистрация</CardTitle>
+                <CardTitle className="text-center font-semibold text-[22px]">
+                  Регистрация
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-5">
                 <div>
@@ -80,14 +81,16 @@ export function Auth(props: LayoutProps) {
                 </div>
                 <div>
                   <Label htmlFor="new"></Label>
-                  <Input id="new" placeholder="Почта"  type="email"/>
+                  <Input id="new" placeholder="Почта" type="email" />
                 </div>
-                <div >
+                <div>
                   <Input id="new" type="password" placeholder="Пароль" />
                 </div>
               </CardContent>
               <CardFooter>
-                <Button type="submit" className="w-full">Войти</Button>
+                <Button asChild className="w-full">
+                  <Link to="/account">Войти</Link>
+                </Button>
               </CardFooter>
             </Card>
           </TabsContent>
