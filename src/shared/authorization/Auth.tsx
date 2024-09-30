@@ -16,23 +16,25 @@ import { useEffect, useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { useLogin } from "../../hooks/useLogin";
 import Spinner from "../../components/ui/spinner";
+import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export function Auth(props: LayoutProps) {
-  const [displayName, setDisplayName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [displayName, setDisplayName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [avatar, setAvatar] = useState<File>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>('auth');
-  const [error, setError] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<string>("auth");
+  const [error, setError] = useState<string>("");
 
   const { signup, error: signupError } = useSignup();
   const { login, error: loginError } = useLogin();
+  const navigate = useNavigate();
 
   const handleOpen = () => setIsOpen(true);
 
@@ -48,49 +50,57 @@ export function Auth(props: LayoutProps) {
 
     setError(loginError);
 
-    if (res) return handleClose();
+    if (res) {
+      navigate("/account");
+      return handleClose();
+    }
 
     setIsLoading(false);
   };
 
   const handleSignUp = async () => {
-    if (!avatar) return;
-
     setIsLoading(true);
 
     const res = await signup({
       displayName,
       email,
       password,
-      avatar,
     });
 
     setError(signupError as string);
 
     if (res) {
+      navigate("/account");
       handleClose();
       return;
     }
-
-    setIsLoading(true);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    setEmail('');
-    setPassword('');
-    setDisplayName('');
-    setAvatar(undefined);
-    setError('')
+    setEmail("");
+    setPassword("");
+    setDisplayName("");
+    setError("");
   }, [activeTab]);
 
   return (
     <Dialog open={isOpen}>
-      <DialogTrigger onClick={handleOpen} asChild>{props.children}</DialogTrigger>
+      <DialogTrigger onClick={handleOpen} asChild>
+        {props.children}
+      </DialogTrigger>
       <DialogContent сlassName="flex justify-center items-center min-w-[462px] min-h-[380px] sm:max-w-[328px] max-h-[366px] mx-auto">
         <Tabs defaultValue="auth">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="auth" onClick={() => setActiveTab('auth')}>Авторизация</TabsTrigger>
-            <TabsTrigger value="registration" onClick={() => setActiveTab('registration')}>Регистрация</TabsTrigger>
+            <TabsTrigger value="auth" onClick={() => setActiveTab("auth")}>
+              Авторизация
+            </TabsTrigger>
+            <TabsTrigger
+              value="registration"
+              onClick={() => setActiveTab("registration")}
+            >
+              Регистрация
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="auth">
             <Card>
@@ -102,10 +112,20 @@ export function Auth(props: LayoutProps) {
               </CardHeader>
               <CardContent className="space-y-5">
                 <div>
-                  <Input onChange={(e) => setEmail(e.target.value)} id="username" placeholder="Логин" type="email" />
+                  <Input
+                    onChange={(e) => setEmail(e.target.value)}
+                    id="username"
+                    placeholder="Логин"
+                    type="email"
+                  />
                 </div>
                 <div>
-                  <Input onChange={(e) => setPassword(e.target.value)} id="password" placeholder="Пароль" type="password" />
+                  <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    placeholder="Пароль"
+                    type="password"
+                  />
                 </div>
                 {loginError && <p className="text-red-500">{error}</p>}
                 <div className="flex items-center gap-3 pt-6 pb-4">
@@ -125,16 +145,25 @@ export function Auth(props: LayoutProps) {
                 </div>
               </CardContent>
               <CardFooter>
-              <Button
+                <Button
                   onClick={handleLogin}
                   disabled={isLoading}
                   type="submit"
+                  className="w-full"
                 >
-                  {isLoading ? <Spinner /> : 'Войти'}
+                  {isLoading ? (
+                    <>
+                      <Spinner />
+                    </>
+                  ) : (
+                    "Войти"
+                  )}
                 </Button>
               </CardFooter>
             </Card>
           </TabsContent>
+
+          {/* Здесь Регистрация */}
 
           <TabsContent value="registration">
             <Card>
@@ -145,25 +174,41 @@ export function Auth(props: LayoutProps) {
               </CardHeader>
               <CardContent className="space-y-5">
                 <div>
-                  <Label htmlFor="current"></Label>
-                  <Input onChange={(e) => setDisplayName(e.target.value)} id="current" placeholder="Имя" />
+                  <Label htmlFor="displayName"></Label>
+                  <Input
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    value={displayName}
+                    placeholder="Имя"
+                  />
                 </div>
                 <div>
-                  <Label htmlFor="new"></Label>
-                  <Input  onChange={(e) => setEmail(e.target.value)} id="new" placeholder="Почта" type="email" />
+                  <Label htmlFor="email"></Label>
+                  <Input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    type="email"
+                    placeholder="Почта"
+                  />
                 </div>
                 <div>
-                  <Input onChange={(e) => setPassword(e.target.value)} id="new" type="password" placeholder="Пароль" />
+                  <Label htmlFor="password"></Label>
+                  <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    type="password"
+                    placeholder="Пароль"
+                  />
                 </div>
-                {signupError && <p className="text-red-500">{error}</p>}
+                {signupError && <p className="text-red-500">{signupError}</p>}
               </CardContent>
               <CardFooter>
-                <Button className="w-full"
-                  type="submit"
+                <Button
+                  className="w-full"
+                  type="button" // изменено с 'submit' на 'button'
                   disabled={isLoading}
                   onClick={handleSignUp}
                 >
-                  {isLoading ? <Spinner /> : 'Зарегистрироваться'}
+                  {isLoading ? <Spinner /> : "Зарегистрироваться"}
                 </Button>
               </CardFooter>
             </Card>

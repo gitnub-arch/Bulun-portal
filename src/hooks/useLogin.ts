@@ -23,7 +23,6 @@ export const useLogin = () => {
 
       const userDoc = doc(db, 'users', response.user.uid);
 
-      await updateDoc(userDoc, { online: true });
 
       dispatch(setUser(response.user));
 

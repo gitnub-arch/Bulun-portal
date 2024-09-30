@@ -4,13 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDIZ8e0pNb-BLvSWnm7yNhGj1a-BHxjF6I",
-  authDomain: "twidy-47d99.firebaseapp.com",
-  projectId: "twidy-47d99",
-  storageBucket: "twidy-47d99.appspot.com",
-  messagingSenderId: "575761208994",
-  appId: "1:575761208994:web:1754637d50337d0a03a9fb"
+// Your web app's Firebase configuration
+const firebaseConfig = { 
+  apiKey : "AIzaSyBVDQJjzi_5fffKftxsy7DU-61QzzZQ_C0" , 
+  authDomain : "bulun-project.firebaseapp.com" , 
+  projectId : "bulun-project" , 
+  storageBucket : "bulun-project.appspot.com" , 
+  messagingSenderId : "1064516408950" , 
+  appId : "1:1064516408950:web:1f0923ac53d5454bc07157" 
 };
 
 // Initialize Firebase
