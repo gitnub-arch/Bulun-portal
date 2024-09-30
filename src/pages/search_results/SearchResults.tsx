@@ -6,13 +6,15 @@ import { SEARCH_ITEM } from "./const";
 
 const SearchResults = () => {
   return (
-    <div className="flex mx-auto max-w-[1200px]">
-      <div>
-        <div className="flex mb-5">
-          <h2 className="text-2xl font-normal">Результат поиска:</h2>
-          <h1 className="font-semibold text-2xl">Вот то что вы искали</h1>
+    <div className="flex flex-col lg:flex-row mx-auto max-w-[1200px]">
+      <div className="w-full lg:w-3/4">
+        <div className="flex flex-col lg:flex-row lg:mb-5 mb-3">
+          <h2 className="text-xl lg:text-2xl font-normal">Результат поиска:</h2>
+          <h1 className="font-semibold text-xl lg:text-2xl lg:ml-4">
+            Вот то что вы искали
+          </h1>
         </div>
-        <div className="flex-wrap grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           {SEARCH_ITEM.map((item) => (
             <div className="rounded-[6px] bg-[#FFFFFF] max-w-[263px] min-h-[317px]">
               <img src={item.imageUrl} alt="" className="mb-4" />
@@ -29,7 +31,7 @@ const SearchResults = () => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="hidden lg:block lg:w-1/4 lg:ml-6">
         <WeatherAside />
         <RoadstatusAside />
         <FlightsAside />
