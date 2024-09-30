@@ -9,6 +9,8 @@ import AcBreadcrumbs from "../accunt_breadcrumbs/AcBreadcrumbs";
 
 import { LINKS_ITEM } from "./const";
 import LinkItemProps from "./type";
+import { Auth } from "../authorization/Auth";
+import { useLogout } from "../../hooks/useLogout";
 
 const AccountHeader = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
@@ -18,6 +20,7 @@ const AccountHeader = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { logout } = useLogout();
 
   const updateActiveLink = (link: LinkItemProps) => {
     setActiveLink(link);
@@ -53,7 +56,8 @@ const AccountHeader = () => {
   };
 
   const handleLogout = () => {
-    console.log("Logged out");
+    logout();
+    navigate("/");
     setIsDropdownOpen(false);
   };
 
@@ -116,7 +120,7 @@ const AccountHeader = () => {
                     className="flex gap-2 items-start block px-4 py-2 text-left w-full text-gray-800 hover:text-[#1875F0]"
                     onClick={handleLogout}
                   >
-                    <LogOut />
+                    <span onClick={logout} />
                     Выход
                   </button>
                 </div>

@@ -4,8 +4,6 @@ import Header from "./shared/header/Header";
 import Footer from "./shared/footer/Footer";
 import AccountHeader from "./shared/account_header/AccountHeader";
 import AddFile from "./shared/add_file/AddFile";
-import { Auth } from "./shared/authorization/Auth";
-
 import Archive from "./pages/archive_page/Archive";
 import Afisha from "./pages/afisha/Afisha";
 import News from "./pages/news/News";
@@ -62,14 +60,12 @@ function App() {
         <Route path="/afisha" element={<Afisha />} />
         <Route path="/archive_page" element={<Archive />} />
         <Route path="/add-file" element={<AddFile />} />
-        <Route path="/authorization" element={<Auth />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/administration" element={<AdministrationSection />} />
         <Route path="/search-result" element={<SearchResults />} />
         <Route path="/transport" element={<Transport />} />
         <Route path="/search-results" element={<SearchResults />} />
       </Routes>
-      <Auth />
       <Footer />
     </div>
   );

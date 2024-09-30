@@ -7,6 +7,7 @@ export const useDocument = (collectionName, id) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if(!id) return;
     const ref = doc(db, collectionName, id);
 
     const unsub = onSnapshot(ref, (snapshot) => {

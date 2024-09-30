@@ -1,13 +1,14 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { auth, db } from '../firebase/config';
-import { AuthContext } from '../context/AuthContext';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/features/user/userSlice';
 
 export const useLogin = () => {
   const [error, setError] = useState<string>('');
   const [isPending, setIsPending] = useState(false);
-  const { dispatch } = useContext<any>(AuthContext);
+  const dispatch = useDispatch();
 
   const login = async (email: string, password: string) => {
     setError('');
@@ -22,9 +23,10 @@ export const useLogin = () => {
 
       const userDoc = doc(db, 'users', response.user.uid);
 
-      await updateDoc(userDoc, { online: true });
 
-      dispatch({ type: 'LOGIN', payload: response.user });
+      dispatch(setUser(response.user));
+
+      return response;
     } catch (err: any) {
       setError(err.message);
     } finally {

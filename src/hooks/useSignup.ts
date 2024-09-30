@@ -1,54 +1,41 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { useContext, useState } from 'react';
-import { auth, db, storage } from '../firebase/config';
-import { AuthContext } from '../context/AuthContext';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { useState } from 'react';
+import { auth, db } from '../firebase/config';
 import { doc, setDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/features/user/userSlice';
 
 interface SignupProps {
   email: string;
   password: string;
   displayName: string;
-  avatar: File;
 }
 
 export const useSignup = () => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState<boolean>(false);
-  const { dispatch } = useContext<any>(AuthContext);
+  const dispatch = useDispatch();
 
-  const signup = async ({ email, password, displayName, avatar }: SignupProps) => {
+  const signup = async ({ email, password, displayName }: SignupProps) => {
     setError(null);
     setIsPending(true);
 
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const response = await createUserWithEmailAndPassword(auth, email, password);
 
       if (!response) {
-        setError('Не получилось создать пользователя');
+        throw new Error('Не получилось создать пользователя');
       }
 
-      const uploadPath = `avatars/${response.user.uid}/${avatar.name}`;
-      const storageRef = ref(storage, uploadPath);
-      await uploadBytes(storageRef, avatar);
-      const photoURL = await getDownloadURL(storageRef);
-
-      await updateProfile(response.user, {
-        displayName,
-        photoURL,
-      });
+      await updateProfile(response.user, { displayName });
 
       await setDoc(doc(db, 'users', response.user.uid), {
         online: true,
         displayName,
-        photoURL,
       });
 
-      dispatch({ type: 'LOGIN', payload: response.user });
+      dispatch(setUser(response.user));
+      return response;
     } catch (err: any) {
       setError(err.message);
     } finally {

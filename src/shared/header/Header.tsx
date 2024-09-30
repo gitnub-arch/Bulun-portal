@@ -86,22 +86,14 @@ const Header = () => {
               Булунский Портал
             </h1>
           </div>
-
-          {/* Блок "Войти" для десктопов */}
           <Auth>
-            <div className="hidden lg:flex">
-              <User
-                className="w-5 h-5 text-[#DADADA] cursor-pointer"
-                onClick={handleUserClick}
-              />
-              <span
-                className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-                onClick={handleUserClick}
-              >
-                Войти
-              </span>
-            </div>
-          </Auth>
+            <span
+              className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
+              onClick={handleUserClick}
+            >
+              Войти
+            </span>
+            </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
