@@ -140,7 +140,7 @@ const Header = () => {
             ) : (
               <div className="relative w-full">
                 <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
-                  <Search className="text-[#999999] mr-2 block lg:hidden" />
+                  <Search className="text-[#999999] mr-2 block" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -167,7 +167,7 @@ const Header = () => {
             />
             {!isSearchActive && (
               <Search
-                className="text-[#999999] cursor-pointer block lg:hidden"
+                className="text-[#999999] cursor-pointer block -mt-5"
                 onClick={() => {
                   setIsSearchActive(true); // Активируем поиск
                   setSearchQuery(""); // Очищаем поле поиска
