@@ -12,7 +12,7 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { useLogin } from "../../hooks/useLogin";
 import Spinner from "../../components/ui/spinner";
@@ -23,6 +23,7 @@ interface LayoutProps {
 }
 
 export function Auth(props: LayoutProps) {
+  const dialogRef = useRef<HTMLDivElement | null>(null); 
   const [displayName, setDisplayName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -84,12 +85,25 @@ export function Auth(props: LayoutProps) {
     setError("");
   }, [activeTab]);
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside); 
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); 
+    };
+  }, []);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+      handleClose();
+    }
+  };
+
   return (
     <Dialog open={isOpen}>
       <DialogTrigger onClick={handleOpen} asChild>
         {props.children}
       </DialogTrigger>
-      <DialogContent сlassName="flex justify-center items-center min-w-[462px] min-h-[380px] sm:max-w-[328px] max-h-[366px] mx-auto">
+      <DialogContent ref={dialogRef} сlassName="flex justify-center items-center min-w-[462px] min-h-[380px] sm:max-w-[328px] max-h-[366px] mx-auto">
         <Tabs defaultValue="auth">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="auth" onClick={() => setActiveTab("auth")}>
