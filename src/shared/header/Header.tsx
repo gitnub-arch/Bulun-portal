@@ -93,7 +93,7 @@ const Header = () => {
             >
               Войти
             </span>
-            </Auth>
+          </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
@@ -140,7 +140,7 @@ const Header = () => {
             ) : (
               <div className="relative w-full">
                 <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
-                  <Search className="text-[#999999] mr-2" />
+                  <Search className="text-[#999999] mr-2 block lg:hidden" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -148,7 +148,7 @@ const Header = () => {
                     onKeyDown={handleSearchKeyDown} // Обработчик нажатия клавиши Enter
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none 
-                 sm:w-1/2 md:w-auto w-24" // Smaller width on mobile (24) and larger on desktop
+                 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" // адаптивная ширина
                   />
                   <X
                     className="text-[#999999] cursor-pointer"
@@ -167,7 +167,7 @@ const Header = () => {
             />
             {!isSearchActive && (
               <Search
-                className="text-[#999999] cursor-pointer"
+                className="text-[#999999] cursor-pointer block lg:hidden"
                 onClick={() => {
                   setIsSearchActive(true); // Активируем поиск
                   setSearchQuery(""); // Очищаем поле поиска
