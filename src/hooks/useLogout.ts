@@ -1,13 +1,14 @@
 import { signOut } from 'firebase/auth';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { auth, db } from '../firebase/config';
-import { AuthContext } from '../context/AuthContext';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/features/user/userSlice';
 
 export const useLogout = () => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const { dispatch } = useContext<any>(AuthContext);
+  const dispatch = useDispatch();
 
   const logout = async () => {
     setError(null);
@@ -21,7 +22,7 @@ export const useLogout = () => {
       await updateDoc(userDoc, { online: false });
       await signOut(auth);
 
-      dispatch({ type: 'LOGOUT' });
+      dispatch(setUser(null));
     } catch (err: any) {
       setError(err.message);
     } finally {
