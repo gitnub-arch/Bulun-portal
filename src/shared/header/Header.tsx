@@ -97,7 +97,6 @@ const Header = () => {
               Войти
             </span>
           </Auth>
-          </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
