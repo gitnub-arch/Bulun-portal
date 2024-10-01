@@ -97,6 +97,7 @@ const Header = () => {
               Войти
             </span>
           </Auth>
+          </Auth>
         </div>
         <Separator className="bg-[#DADADA] mt-[26px] mb-[26px] w-full" />
         <div className="flex justify-between items-center mx-8">
@@ -143,7 +144,7 @@ const Header = () => {
             ) : (
               <div className="relative w-full">
                 <div className="flex items-center border border-[#DADADA] rounded-md px-4 py-2 w-full mb-5">
-                  <Search className="text-[#999999] mr-2" />
+                  <Search className="text-[#999999] mr-2 block" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -170,7 +171,7 @@ const Header = () => {
             />
             {!isSearchActive && (
               <Search
-                className="text-[#999999] cursor-pointer"
+                className="text-[#999999] cursor-pointer block -mt-5"
                 onClick={() => {
                   setIsSearchActive(true); // Активируем поиск
                   setSearchQuery(""); // Очищаем поле поиска
