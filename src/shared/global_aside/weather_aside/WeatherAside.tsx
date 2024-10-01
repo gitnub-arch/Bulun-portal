@@ -1,4 +1,5 @@
 import { Ellipsis, CloudRain } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const WeatherAside = () => {
   return (
@@ -18,9 +19,11 @@ const WeatherAside = () => {
           Ветер северо-западный <b>2 м/с,</b> с порывами <b>до 10 м/c</b>
         </p>
       </div>
-      <button className="px-10 py-3 mb-7 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
-        ПРОГНОЗ ПОГОДЫ
-      </button>
+      <Link to="/weather">
+        <button className="px-10 py-3 mb-7 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
+          ПРОГНОЗ ПОГОДЫ
+        </button>
+      </Link>
       <div className="h-[2px] bg-[#F7F7F7] w-full"></div>
       <div className="text-center py-5">
         <p className="text-[#D86E28] text-sm font-semibold">отмена занятий</p>
