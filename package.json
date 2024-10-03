@@ -5,14 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": {
-      "env": {
-      "IGNORE_ERRORS": "true"
-      }
-    }
-    "deploy": "vercel --prod || true",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vercel --prod || true"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
