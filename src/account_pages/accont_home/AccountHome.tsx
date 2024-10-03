@@ -35,7 +35,7 @@ const AccountHome = () => {
 
   return (
     <div className="container max-w-[1140px] mx-auto mt-5 flex flex-wrap gap-8 md:flex-nowrap">
-      <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff] ml-9 lg:ml-0">
+      <aside className="py-[50px] px-[35px] max-w-[360px] bg-[#fff] ml-4 lg:ml-0">
         <div>
           <h2 className="text-[22px] font-semibold mb-5">Баланс аккаунта</h2>
           <div className="flex items-center mb-5">
@@ -98,7 +98,7 @@ const AccountHome = () => {
       </aside>
 
       <div>
-        <div className=" bg-[#fff] py-[50px] px-[35px] ml-9 w-[350px] lg:w-full lg:ml-0">
+        <div className=" bg-[#fff] py-[50px] px-[35px] ml-4 w-[350px] lg:w-full lg:ml-0">
           <p className="text-5 font-semibold">Статистика расхода трафика</p>
           <Separator className="my-5 max-w-[690px]" />
           <div className="flex gap-14 mb-5">
@@ -197,27 +197,29 @@ const AccountHome = () => {
         </div>
         <div className="w-full bg-[#fff] py-[50px] px-[35px] mt-5">
           <div className="flex items-center justify-between -mt-8">
-            <p className="text-xl font-semibold">Подключенные устройства</p>
-            <button className="px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
+            <p className="text-[16px] lg:text-xl font-semibold">Подключенные устройства</p>
+            <Link to="/account-devices">
+              <button className="px-2 lg:px-10 py-3 border-[#1875F0] text-[12px] lg:text-sm font-semibold text-[#1875F0]">
               Показать все устройства
-            </button>
+              </button>
+            </Link>
           </div>
           <Separator className="my-5" />
           {/* Заголовки колонок */}
-          <div className="grid grid-cols-4 mt-11 justify-between">
-            <div className="flex items-center">
+          <div className="grid grid-cols-4 mt-11 lg:justify-between">
+            <div className="flex items-center text-[12px] lg:text-base">
               <span>УСТРОЙСТВО</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-9 gl:ml-4">
+            <div className="flex items-center ml-8 lg:ml-5 text-[12px] lg:text-base">
               <p>РАСХОДТРАФИКА</p>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-24 lg:ml-8">
+            <div className="flex items-center ml-24 lg:ml-8 text-[12px] lg:text-base text-nowrap">
               <span>IP АДРЕС</span>
               <ChevronDown />
             </div>
-            <div className="flex items-center ml-7 hidden lg:block">
+            <div className="flex items-center ml-7 hidden lg:flex">
               <span>СТАТУС</span>
               <ChevronDown />
             </div>
@@ -230,17 +232,17 @@ const AccountHome = () => {
                 <img
                   src={device.imgURL}
                   alt=""
-                  className="mr-3 bg-[#F6F6FA] w-10 h-10 rounded-full pt-2"
+                  className="mr-3 bg-[#F6F6FA] w-10 h-10 rounded-full p-2"
                 />
-                <p>{device.name}</p>
+                <p className="text-[12px] lg:text-base text-nowrap">{device.name}</p>
               </div>
-              <div className="flex items-center ml-14 lg:ml-4">
+              <div className="flex items-center ml-10 lg:ml-4">
                 <img src={network} alt="" />
                 <p className="ml-2">{device.dataUsage}</p>
                 <p className="ml-1">ГИГ</p>
               </div>
-              <p className="mt-3 ml-20 lg:ml-8">{device.ipAddress}</p>
-              <p className="text-[#32BC78] bg-[#E7F9F0] py-3 rounded-full text-center hidden lg:ml-6">
+              <p className="mt-2 ml-20 lg:ml-8">{device.ipAddress}</p>
+              <p className="text-[#32BC78] bg-[#E7F9F0] py-3 rounded-full text-center hidden lg:block">
                 {device.status}
               </p>
             </div>

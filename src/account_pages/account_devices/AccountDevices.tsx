@@ -53,7 +53,7 @@ const AccountDevices = () => {
         <div className="flex items-center justify-between -mt-8">
           <p className="text-xl font-semibold">Подключенные устройства</p>
           <button
-            className="px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0]"
+            className="px-4 py-2 md:px-10 md:py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0]"
             onClick={handleOpenModal} // Открываем модальное окно
           >
             Добавить устройство
@@ -62,7 +62,7 @@ const AccountDevices = () => {
         <Separator className="my-5" />
 
         {/* Заголовки колонок */}
-        <div className="grid grid-cols-5 mt-11 gap-20 justify-between">
+        <div className="hidden md:grid grid-cols-5 mt-11 gap-20 justify-between">
           <div className="flex items-center">
             <span>УСТРОЙСТВО</span>
             <ChevronDown />
@@ -83,7 +83,10 @@ const AccountDevices = () => {
 
         {/* Список устройств */}
         {currentDevices.map((device, index) => (
-          <div className="grid grid-cols-5 items-center mt-11" key={index}>
+          <div
+            className="flex flex-col md:grid md:grid-cols-5 items-start md:items-center mt-11"
+            key={index}
+          >
             <div className="flex items-center">
               <img
                 src={device.imgURL}
@@ -91,23 +94,31 @@ const AccountDevices = () => {
                 className="mr-3 bg-[#F6F6FA] w-10 h-10 rounded-full pt-2"
               />
               <p>{device.name}</p>
+              <span className="ml-2 text-sm text-gray-500 block md:hidden">Устройство</span>
             </div>
-            <div className="flex items-center ml-8">
+            <div className="flex items-center ml-0 mt-4 md:ml-8 md:mt-0">
               <img src={network} alt="" />
               <p className="ml-2">{device.dataUsage}</p>
               <p className="ml-1">ГИГ</p>
+              <span className="ml-2 text-sm text-gray-500 block md:hidden">Расход трафика</span>
             </div>
-            <p className="ml-12">{device.add}</p>
-            <p className="ml-20">{device.ipAddress}</p>
+            <div className="ml-0 mt-4 md:ml-12 md:mt-0">
+              <p>{device.add}</p>
+              <span className="ml-2 text-sm text-gray-500 block md:hidden">Добавлен</span>
+            </div>
+            <div className="ml-0 mt-4 md:ml-20 md:mt-0">
+              <p>{device.ipAddress}</p>
+              <span className="ml-2 text-sm text-gray-500 block md:hidden">IP Адрес</span>
+            </div>
             <Link to="/devices-reduct">
-              <PencilLine className="mt-3 ml-40 p-3 w-11 h-11 bg-[#1876f029] text-[#1875F0] cursor-pointer" />
+              <PencilLine className="mt-3 ml-auto md:ml-40 p-3 w-11 h-11 bg-[#1876f029] text-[#1875F0] cursor-pointer" />
             </Link>
           </div>
         ))}
 
         {/* Пагинация */}
       </div>
-      <div className="ml-[875px]">
+      <div className="md:ml-[875px]">
         <Pagination>
           <PaginationContent>
             <PaginationItem>

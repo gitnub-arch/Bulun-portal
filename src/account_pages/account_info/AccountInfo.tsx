@@ -1,20 +1,32 @@
-import  { useState } from "react";
+import { useState, useEffect } from "react";
 import { Separator } from "../../components/ui/separator";
 import { PencilLine } from "lucide-react";
 
 const AccountInfo = () => {
+  // Функция для загрузки данных из localStorage
+  const loadFromLocalStorage = () => {
+    const savedData = localStorage.getItem("formData");
+    return savedData ? JSON.parse(savedData) : {
+      lastName: "Введите",
+      firstName: "Свое",
+      patronymic: "ФИО",
+      phoneNumber: "0 000 000-00-00",
+      birthDate: "00.00.0000",
+      city: "Город",
+      street: "Улица",
+      house: "№",
+      apartment: "№",
+    };
+  };
+
+  // Инициализируем состояние с данными из localStorage
+  const [formData, setFormData] = useState(loadFromLocalStorage);
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    lastName: "Смирнов",
-    firstName: "Тимур",
-    patronymic: "Серафимович",
-    phoneNumber: "8 909 478-96-58",
-    birthDate: "15.03.1990",
-    city: "Владивосток",
-    street: "Ленина",
-    house: "15",
-    apartment: "36",
-  });
+
+  // Функция для сохранения данных в localStorage при каждом изменении
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,10 +48,10 @@ const AccountInfo = () => {
     <div className="container max-w-[1140px] mx-auto">
       <div className="bg-[#fff] py-5 px-9 mt-5 rounded-lg">
         <div className="flex mb-5 items-center justify-between">
-          <h2 className="text-2xl font-semibold">Мои данные</h2>
+          <h2 className="text-xl lg:text-2xl font-semibold">Мои данные</h2>
           <button
             onClick={handleEditClick}
-            className="px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0] flex items-center gap-2"
+            className="px-5 lg:px-10 py-3 border-[#1875F0] text-sm font-semibold text-[#1875F0] flex items-center gap-2"
           >
             <PencilLine />
             {isEditing ? "Отменить" : "Редактировать данные"}
@@ -50,7 +62,7 @@ const AccountInfo = () => {
         <div>
           <p className="font-medium text-lg mb-3">Учётная информация</p>
 
-          <div className="flex gap-7 mb-5 flex-wrap md:flex-nowrap">
+          <div className="flex gap-7 mb-5 flex-wrap md:flex-nowrap text-sm">
             {isEditing ? (
               <>
                 <div className="relative">
@@ -90,7 +102,7 @@ const AccountInfo = () => {
                 <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 w-full whitespace-nowrap">
                   <span className="text-gray-400 text-sm mr-3">ФИО</span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {`${formData.lastName} ${formData.firstName} ${formData.patronymic}`}
                   </span>
                 </div>
@@ -99,7 +111,7 @@ const AccountInfo = () => {
                     НОМЕР ТЕЛЕФОНА
                   </span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.phoneNumber}
                   </span>
                 </div>
@@ -108,7 +120,7 @@ const AccountInfo = () => {
                     ДАТА РОЖДЕНИЯ
                   </span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.birthDate}
                   </span>
                 </div>
@@ -146,7 +158,7 @@ const AccountInfo = () => {
                 </div>
 
                 <div className="relative">
-                  <p className="absolute text-gray-400 left-5 top-1">Улица</p>
+                  <p className="absolute text-gray-400 left-5 top-1">Дом</p>
                   <input
                     name="house"
                     value={formData.house}
@@ -176,28 +188,28 @@ const AccountInfo = () => {
                     Населенный пункт
                   </span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.city}
                   </span>
                 </div>
                 <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
                   <span className="text-gray-400 text-sm mr-3">Улица</span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.street}
                   </span>
                 </div>
                 <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
                   <span className="text-gray-400 text-sm mr-3">Дом</span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.house}
                   </span>
                 </div>
                 <div className="flex items-center bg-[#F7F7F7] rounded-lg px-5 py-1 min-w-[215px] whitespace-nowrap">
                   <span className="text-gray-400 text-sm mr-3">Квартира</span>
                   <Separator orientation="vertical" className="h-10 w-[2px]" />
-                  <span className="text-black font-medium text-lg ml-4">
+                  <span className="text-black font-medium text-sm lg:text-lg ml-4">
                     {formData.apartment}
                   </span>
                 </div>
