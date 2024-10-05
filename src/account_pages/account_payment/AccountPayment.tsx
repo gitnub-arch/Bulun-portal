@@ -16,6 +16,7 @@ import Payment from "@/shared/popups/pay/Payment";
 const AccountPayment = () => {
   const [selectedDelivery, setSelectedDelivery] = useState("");
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
+  const [paymentAmount, setPaymentAmount] = useState(540); // Добавляем состояние для суммы оплаты
 
   const handleSelectDelivery = (option: string) => {
     setSelectedDelivery(option);
@@ -25,12 +26,17 @@ const AccountPayment = () => {
     setIsPaymentVisible(true);
   };
 
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // Убираем все нечисловые символы
+    setPaymentAmount(value ? parseInt(value) : 0); // Обновляем состояние, если значение не пустое
+  };
+
   if (isPaymentVisible) {
     return <Payment />;
   }
 
   return (
-    <div className="container mx-auto mt-5 px-4 md:px-0">
+    <div className="container max-w-[1140px] mx-auto mt-5 px-4 md:px-0">
       <h2 className="text-2xl font-semibold mb-5">Пополнение лицевого счёта</h2>
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex-1">
@@ -73,8 +79,13 @@ const AccountPayment = () => {
                   </div>
                 </div>
                 <div className="flex items-center ml-14 bg-[#F7F7F7] px-7 py-4 rounded-lg">
-                  <span className="text-[#222222] text-[34px]">540</span>
-                  <RussianRuble className="text-[#76767A] h-5" />
+                  <input
+                    type="text"
+                    value={paymentAmount}
+                    onChange={handleAmountChange}
+                    className="text-center text-[#222222] text-[34px] w-20 border-b border-[#ccc] focus:outline-none"
+                  />
+                  <RussianRuble className="text-[#76767A] h-5 ml-2" />
                 </div>
               </div>
             </div>
@@ -127,9 +138,12 @@ const AccountPayment = () => {
           <div className="flex items-center gap-3">
             <span className="text-lg text-[#76767A]">К оплате:</span>
             <div className="flex border-2 px-4 py-2">
-              <span className="text-center mt-1 mx-4 text-2xl font-semibold">
-                540
-              </span>
+              <input
+                type="text"
+                value={paymentAmount}
+                onChange={handleAmountChange}
+                className="text-center text-2xl font-semibold w-20 border-b border-[#ccc] focus:outline-none"
+              />
               <Separator
                 orientation="vertical"
                 className="w-[2px] h-9 mr-4 ml-1"

@@ -51,9 +51,7 @@ const Header = () => {
   }, [location]);
 
   // Функция для перехода на страницу авторизации
-  const handleUserClick = () => {
-    navigate("/auth"); // Переход на страницу авторизации
-  };
+
 
   // Обработчик нажатия клавиши Enter в поисковой строке
   const handleSearchKeyDown = (e) => {
@@ -92,7 +90,6 @@ const Header = () => {
           <Auth>
             <span
               className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-              onClick={handleUserClick}
             >
               Войти
             </span>
@@ -201,13 +198,10 @@ const Header = () => {
           {/* Войти в мобильной версии */}
           <Auth>
             <div className="flex mt-4">
-              <User
-                className="w-5 h-5 text-[#DADADA] cursor-pointer"
-                onClick={handleUserClick}
-              />
+            
               <span
                 className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-                onClick={handleUserClick}
+               
               >
                 Войти
               </span>
