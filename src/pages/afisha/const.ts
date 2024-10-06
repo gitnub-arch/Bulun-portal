@@ -1,6 +1,6 @@
 import AfishaProps, { AfishaListProps, AfishaTimeProps } from "./type";
 import gentelmen from "@/assets/images/gentelmen.png";
-import greenBook from "@/assets/images/greenBook.png";
+import greenbook from "@/assets/images/greenbook.png";
 import angel from "@/assets/images/angel.png";
 
 export const AFISHA_LIST: AfishaListProps[] = [
@@ -96,7 +96,7 @@ export const AFISHA_ITEM: AfishaProps[] = [
     index: 0,
   },
   {
-    imgUrl: greenBook,
+    imgUrl: greenbook,
     title: "Зеленая книга",
     enName: "Green Book",
     duration: "1 час 55 минут",
