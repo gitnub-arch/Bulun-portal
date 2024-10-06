@@ -53,7 +53,7 @@ function App() {
         <Route path="/account-payment" element={<AccountPayment />} />
         <Route path="/devices-reduct" element={<DevicesReduct />} />
         {/* Обычные маршруты */}
-        <Route path="/" element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/announcement" element={<Announcement />} />{" "}
         {/* Маршрут на авторизацию */}

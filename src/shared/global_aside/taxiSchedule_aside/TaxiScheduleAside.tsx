@@ -1,4 +1,5 @@
 import { Ellipsis } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TaxiScheduleAside = () => {
   return (
@@ -15,9 +16,11 @@ const TaxiScheduleAside = () => {
           <p className="text-xl font-semibold text-[#1875F0] pb-3">12:00</p>
         </div>
       </div>
-      <button className="px-10 py-3 mb-7 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
-        ПОДРОБНЕЕ
-      </button>
+      <Link to="/transport">
+        <button className="px-10 py-3 mb-7 border-[#1875F0] text-sm font-semibold text-[#1875F0]">
+          ПОДРОБНЕЕ
+        </button>
+      </Link>
     </div>
   );
 };

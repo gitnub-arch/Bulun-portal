@@ -1,4 +1,5 @@
 import { Ellipsis, Plane } from "lucide-react";
+import { Link } from "react-router-dom";
 const FlightsAside = () => {
   return (
     <div className="bg-[#fff] max-w-[266px] m-5 rounded-md shadow-[0px_3px_10px_rgba(0,0,0,0.3)]">
@@ -32,9 +33,11 @@ const FlightsAside = () => {
         </div>
       </div>
       <div className="h-[2px] bg-[#F7F7F7] w-full"></div>
-      <p className="text-center py-5 font-semibold text-sm underline text-[#1875F0]">
+    <Link to={"/transport"} className="cursour-pointer">
+    <p className="text-center py-5 font-semibold text-sm underline text-[#1875F0]">
         полное расписание
       </p>
+    </Link>
     </div>
   );
 };
