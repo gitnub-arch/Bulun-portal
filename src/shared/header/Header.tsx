@@ -3,15 +3,19 @@ import {
   ChevronDown,
   CloudRainWind,
   Search,
+  User,
   X,
 } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "../../components/ui/separator";
+
+import { Link } from "react-router-dom";
 import { LINKS_ITEM } from "./const";
 import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Auth } from "../authorization/Auth"; 
+import { useLocation, useNavigate } from "react-router-dom";
+import { Auth } from "../authorization/Auth"; // Компонент авторизации
+
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
   const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
@@ -49,7 +53,6 @@ const Header = () => {
 
   // Функция для перехода на страницу авторизации
 
-
   // Обработчик нажатия клавиши Enter в поисковой строке
   const handleSearchKeyDown = (e) => {
     if (e.key === "Enter" && searchQuery.trim()) {
@@ -73,9 +76,7 @@ const Header = () => {
               Тиксик
             </h4>
             <ChevronDown className="text-[#B3B3B3] w-[18px] h-[18px]" />
-            <Link to="/weather">
-              <CloudRainWind className="ml-12 text-[#DADADA]" />
-            </Link>
+            <CloudRainWind className="ml-12 text-[#DADADA]" />
             <p className="ml-2 font-medium text-base text-[#666666]">+8°С</p>
           </div>
 
@@ -85,9 +86,7 @@ const Header = () => {
             </h1>
           </div>
           <Auth>
-            <span
-              className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-            >
+            <span className="ml-5 font-medium text-base text-[#999999] cursor-pointer">
               Войти
             </span>
           </Auth>
@@ -121,9 +120,9 @@ const Header = () => {
             {!isSearchActive ? (
               <div className="flex justify-center gap-9 w-full">
                 {LINKS_ITEM.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="text-gray-600 font-medium"
                     onClick={() => handleLinkClick(link)}
                   >
@@ -131,7 +130,7 @@ const Header = () => {
                     {activeLink.label === link.label && (
                       <hr className="mt-4 border-[#1875F0] border-[2px] rounded-full" />
                     )}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ) : (
@@ -145,7 +144,7 @@ const Header = () => {
                     onKeyDown={handleSearchKeyDown} // Обработчик нажатия клавиши Enter
                     placeholder="Введите фразу для поиска"
                     className="flex-grow text-base outline-none 
-                 sm:w-1/2 md:w-auto w-24"
+                 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" // адаптивная ширина
                   />
                   <X
                     className="text-[#999999] cursor-pointer"
@@ -178,7 +177,7 @@ const Header = () => {
       {/* Мобильное бургер-меню */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white shadow-lg rounded-md p-4 absolute w-full top-0 left-0 z-50">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mb-3">
             <h1 className="font-black text-lg text-[#000000]">Меню</h1>
             <X className="text-[#000000] cursor-pointer" onClick={toggleMenu} />
           </div>
@@ -195,11 +194,7 @@ const Header = () => {
           {/* Войти в мобильной версии */}
           <Auth>
             <div className="flex mt-4">
-            
-              <span
-                className="ml-5 font-medium text-base text-[#999999] cursor-pointer"
-               
-              >
+              <span className="ml-5 font-medium text-base text-[#999999] cursor-pointer">
                 Войти
               </span>
             </div>
