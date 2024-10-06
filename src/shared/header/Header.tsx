@@ -3,7 +3,6 @@ import {
   ChevronDown,
   CloudRainWind,
   Search,
-  User,
   X,
 } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
@@ -12,9 +11,7 @@ import { useState, useEffect } from "react";
 import LinkItemProps from "./type";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Auth } from "../authorization/Auth"; // Компонент авторизации
-import Weather from "../../pages/weather_page/Weather";
-
+import { Auth } from "../authorization/Auth"; 
 const Header = () => {
   const [activeLink, setActiveLink] = useState<LinkItemProps>(LINKS_ITEM[0]);
   const [history, setHistory] = useState<LinkItemProps[]>([LINKS_ITEM[0]]);
