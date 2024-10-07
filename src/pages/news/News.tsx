@@ -15,7 +15,7 @@ import RoadstatusAside from "@/shared/global_aside/roadStatus_asede/RoadStatusAs
 import WeatherAside from "@/shared/global_aside/weather_aside/WeatherAside";
 
 // Функция для преобразования даты
-const parseDate = (dateStr) => {
+const parseDate = (dateStr : any) => {
   const [day, month, year] = dateStr.split(".").map(Number);
   return new Date(year, month - 1, day);
 };
@@ -24,7 +24,7 @@ const News = () => {
   const [sortOption, setSortOption] = useState("new");
 
  
-  const handleSortChange = (value) => {
+  const handleSortChange = (value : any) => {
     setSortOption(value);
   };
 
