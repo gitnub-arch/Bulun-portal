@@ -21,26 +21,26 @@ const parseDate = (dateStr) => {
 };
 
 const News = () => {
-  const [sortOption, setSortOption] = useState("new"); // Состояние для сортировки
+  const [sortOption, setSortOption] = useState("new");
 
-  // Функция для обработки изменения сортировки
+ 
   const handleSortChange = (value) => {
     setSortOption(value);
   };
 
-  // Функция для сортировки элементов
+  
   const sortedNewspapers = [...NEWSPAPER_ITEM].sort((a, b) => {
     if (sortOption === "new") {
-      return parseDate(b.data) - parseDate(a.data); // Сортировка по дате, новые первыми
+      return parseDate(b.data) - parseDate(a.data); 
     }
     if (sortOption === "old") {
-      return parseDate(a.data) - parseDate(b.data); // Старые первыми
+      return parseDate(a.data) - parseDate(b.data); 
     }
     if (sortOption === "alphabetical") {
-      return a.title.localeCompare(b.title); // Сортировка по алфавиту
+      return a.title.localeCompare(b.title); 
     }
     if (sortOption === "numberical") {
-      return b.numbering - a.numbering; // Сортировка по номерам
+      return b.numbering - a.numbering; 
     }
     return 0;
   });
